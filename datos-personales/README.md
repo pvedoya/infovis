@@ -1,4 +1,4 @@
-*Trabajo Practico Datos personales: Viajes (2010-2021)*
+*Trabajo Practico datos personales: viajes (2010-2021)*
 
 Raw data: la idea es juntar informacion de los viajes que hize historicamente, consultando mi memoria, albumes de fotos, familiares, etc., y agruparlos en un documento .csv desde el cual hacer la representacion de los datos, donde los datos a recopilar son los siguientes:
 1. Ciudad visitada 
@@ -9,4 +9,19 @@ Raw data: la idea es juntar informacion de los viajes que hize historicamente, c
 6. Fecha de partida
 7. Transporte mediante el cual llegue
 
-Graficos: ver el .jpeg adjunto para mejor referencia, la idea inicialmente es visualizar un heatmap de los lugares visitados, un grafico con % de transporte utilizado, buscar maneras distintas de representar epocas en las que viaje, y organizar en un grafico de barras el pais mas visitado.
+Donde un ejemplo de entrada es:
+|Ciudad|Latitud|Longitud|Pais|Llegada|Partida|Transporte|
+|-------|-------|-------|
+|Roma|+41.9028|+12.4964|Italia|21/07/2019|23/07/2021|Avion|
+|Napoles|+40.8518|+14.2681|Italia|23/07/2019|24/07/2021|Auto|
+
+Graficos: 
+<img src="./Graficos 1.jpeg"/>
+1. Grafico 1: heatmap de ciudades visitadas en base a las coordenadas geograficas
+2. Grafico 2: piechart con el porcentaje de transporte que use para llegar a cada ciudad
+<img src="./Graficos 2.jpeg"/>
+1. Grafico 3: cantidad de dias que estuve en cada ciudad
+2. Grafico 4: cantidad de ciudades visitadas por pais 
+<img src="./Graficos 3.jpeg"/>
+1. Grafico 5(necesito distancia de bs as a cada ciudad): grafico de kms viajados por año 
+2. Grafico 6: heatmap de que dias de cada mes suelo viajar
