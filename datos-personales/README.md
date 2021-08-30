@@ -8,4 +8,4 @@ los datos a recopilar son los siguientes:
 1. Fecha de partida
 1. Transporte mediante el cual llegue
 
-Graficos: ver el jpeg adjunto 
+Graficos: ver el .jpeg adjunto para mejor referencia, la idea inicialmente es visualizar un heatmap de los lugares visitados, un grafico con % de transporte utilizado, buscar maneras distintas de representar epocas en las que viaje, y organizar en un grafico de barras el pais mas visitado.
