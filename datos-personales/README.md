@@ -1,7 +1,6 @@
 *Trabajo Practico Datos personales: Viajes*
 
-Raw data: la idea es juntar informacion de los viajes que hize historicamente, y agruparlos en un documento .csv desde el cual hacer la representacion de los datos, 
-los datos a recopilar son los siguientes:
+Raw data: la idea es juntar informacion de los viajes que hize historicamente, consultando mi memoria, albumes de fotos, familiares, etc., y agruparlos en un documento .csv desde el cual hacer la representacion de los datos, donde los datos a recopilar son los siguientes:
 1. Ciudad visitada
 1. Pais al cual pertenece la ciudad
 1. Fecha de llegada
