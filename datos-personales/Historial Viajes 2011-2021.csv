@@ -1,0 +1,213 @@
+Ciudad,Pais,Latitud,Longitud,Transporte,Distancia desde ultimo punto (km),Mes,Año
+Miami,EEUU,25.77417,-80.1936,Avion,7175.14,Enero,2011
+Orlando,EEUU,28.54211,-81.379,Auto,329.34,Enero,2011
+Miami,EEUU,25.77417,-80.1936,Auto,329.34,Enero,2011
+Kingston,Jamaica,17.97122,-76.7928,Avion,935.73,Enero,2011
+Montego Bay,Jamaica,18.47246,-77.9217,Auto,131.61,Enero,2011
+Kingston,Jamaica,17.97122,-76.7928,Auto,131.61,Enero,2011
+Miami,EEUU,25.77417,-80.1936,Avion,935.73,Enero,2011
+Buenos Aires,Argentina,-34.6076,-58.4371,Avion,7175.14,Enero,2011
+Houston,EEUU,29.75894,-95.3677,Avion,8137.59,Septiembre,2011
+San Francisco,EEUU,37.77903,-122.42,Avion,2643.31,Septiembre,2011
+Monterrey,EEUU,36.60026,-121.895,Auto,139.08,Septiembre,2011
+Los Angeles,EEUU,34.05369,-118.243,Auto,435.74,Septiembre,2011
+San Diego,EEUU,32.71742,-117.163,Auto,179.24,Septiembre,2011
+Houston,EEUU,29.75894,-95.3677,Avion,2094.16,Septiembre,2011
+Buenos Aires,Argentina,-34.6076,-58.4371,Avion,8137.59,Septiembre,2011
+La Habana,Cuba,23.13531,-82.358963,Avion,6899.29,Enero,2012
+Guardalavaca,Cuba,21.11808,-75.835,Avion,708.32,Enero,2012
+Varadero,Cuba,23.14958,-81.26,Auto,602.61,Enero,2012
+La Habana,Cuba,23.13531,-82.358963,Avion,112.37,Enero,2012
+Buenos Aires,Argentina,-34.6076,-58.4371,Avion,6899.29,Enero,2012
+Córdoba,Argentina,-31.4173,-64.1833,Auto,642.37,Julio,2012
+Tafi del Valle,Argentina,-26.8506,-65.6962,Auto,528.58,Julio,2012
+Salta,Argentina,-25.1077,-64.3495,Auto,235.96,Julio,2012
+Tilcara,Argentina,-23.5768,-65.3934,Auto,200.39,Julio,2012
+Cordoba,Argentina,-31.4173,-64.1833,Auto,879.9,Julio,2012
+Buenos Aires,Argentina,-34.6076,-58.4371,Auto,642.37,Julio,2012
+São Paulo,Brasil,-23.5507,-46.6334,Avion,1678.72,Septiembre,2012
+Nueva York,EEUU,40.71273,-74.006,Avion,7685.26,Septiembre,2012
+Washington,EEUU,38.89499,-77.0366,Auto,328.39,Septiembre,2012
+Nueva York,EEUU,40.71273,-74.006,Auto,328.39,Septiembre,2012
+São Paulo,Brasil,-23.5507,-46.6334,Avion,7685.26,Septiembre,2012
+Buenos Aires,Argentina,-34.6076,-58.4371,Avion,1678.72,Septiembre,2012
+San Juan,EEUU,18.4653,-66.1167,Avion,5956.77,Enero,2013
+Tortola,Islas Vírgenes Británicas,18.42106,-64.6388,Barco,155.96,Enero,2013
+Guadalupe,Francia,16.23051,-61.6871,Barco,396.82,Enero,2013
+Bridgetown,Barbados,13.09778,-59.6184,Barco,413.32,Enero,2013
+Sint Maarten,Holanda,18.04237,-63.055,Barco,661.55,Enero,2013
+Saint Kitts,Saint Kitts and Nevis,17.25051,-62.6726,Barco,96.92,Enero,2013
+San Juan de Puerto Rico,EEUU,25.82473,-97.4824,Barco,3712.06,Enero,2013
+Miami,EEUU,25.77417,-80.1936,Avion,1729.48,Enero,2013
+Buenos Aires,Argentina,-34.6076,-58.4371,Avion,7175.14,Enero,2013
+Punta del Este,Uruguay,-34.9632,-54.944,Auto,630.23,Abril,2013
+Buenos Aires,Argentina,-34.6076,-58.4371,Auto,630.23,Abril,2013
+Córdoba,Argentina,-31.4173,-64.1833,Auto,642.37,Julio,2013
+San Fernando del Valle de Catamarca,Argentina,-28.4693,-65.789663,Auto,362.47,Julio,2013
+La Rioja,Argentina,-29.4069,-66.8498,Auto,146.66,Julio,2013
+San Juan,Argentina,-30.7054,-69.1988,Auto,268.23,Julio,2013
+Buenos Aires,Argentina,-34.6076,-58.4371,Auto,1096.1,Julio,2013
+São Paulo,Brasil,-23.5507,-46.6334,Avion,1678.72,Septiembre,2013
+Paris,Francia,48.8567,2.351462,Avion,9401.43,Septiembre,2013
+Florencia,Italia,43.76987,11.25558,Avion,886.41,Septiembre,2013
+Venecia,Italia,45.43719,12.33459,Auto,204.12,Septiembre,2013
+Pisa,Italia,43.71594,10.40186,Auto,245.06,Septiembre,2013
+Florencia,Italia,43.76987,11.25558,Auto,68.84,Septiembre,2013
+Sorrento,Italia,40.62491,14.37484,Auto,433.86,Septiembre,2013
+Capri,Italia,45.11885,7.331914,Auto,760.43,Septiembre,2013
+Roma,Italia,41.89332,12.48293,Auto,548.6,Septiembre,2013
+Amsterdam,Holanda,52.37276,4.893604,Avion,1297.26,Septiembre,2013
+Brujas,Belgica,50.84656,4.351697,Auto,173.77,Septiembre,2013
+Amsterdam,Holanda,52.37276,4.893604,Avion,173.77,Septiembre,2013
+São Paulo,Brasil,-23.5507,-46.6334,Avion,9804.79,Septiembre,2013
+Buenos Aires,Argentina,-34.6076,-58.4371,Avion,1678.72,Septiembre,2013
+Pinamar,Argentina,-37.1099,-56.8539,Auto,312.67,Diciembre,2014
+Buenos Aires,Argentina,-34.6076,-58.4371,Auto,312.67,Enero,2014
+Panamá,Panamá,9.091308,-79.3737,Avion,5648,Enero,2014
+Cartagena de Indias,Colombia,10.41958,-75.5271,Barco,446.63,Enero,2014
+Bonaire,Holanda,12.167,-68.291,Barco,812.52,Enero,2014
+Aruba,Holanda,12.4903,-69.961,Barco,184.93,Enero,2014
+Curaçao,Holanda,12.1845,-68.9641,Barco,113.5,Enero,2014
+Panamá,Panamá,9.091308,-79.3737,Barco,1188.21,Enero,2014
+Miami,EEUU,25.77417,-80.1936,Avion,1856.98,Enero,2014
+Buenos Aires,Argentina,-37.1099,-56.8539,Avion,7175.14,Enero,2014
+Calafate,Argentina,-50.3389,-72.2721,Avion,1915.32,Julio,2014
+Ushuaia,Argentina,-54.8069,-68.3073,Avion,564.23,Julio,2014
+Buenos Aires,Argentina,-37.1099,-56.8539,Avion,2151.27,Julio,2014
+Lima,Perú,-12.0621,-77.0365,Avion,3435.71,Septiembre,2014
+Cuzco,Perú,-13.5169,-71.9793,Avion,571.7,Septiembre,2014
+Machu Picchu,Perú,-13.1644,-72.5448,Tren,72.66,Septiembre,2014
+Cuzco,Perú,-13.5169,-71.9793,Tren,72.66,Septiembre,2014
+Lima,Perú,-12.0621,-77.0365,Avion,571.7,Septiembre,2014
+Buenos Aires,Argentina,-37.1099,-56.8539,Avion,3435.71,Septiembre,2014
+Chapadmalal,Argentina,-38.1697,-57.6382,Auto,402.47,Enero,2015
+Buenos Aires,Argentina,-34.6076,-58.4371,Auto,402.47,Enero,2015
+Toronto,Canadá,43.65348,-79.3839,Avion,8956.9,Enero,2015
+Houston,EEUU,29.75894,-95.3677,Avion,2094.17,Enero,2015
+Nassau,Bahamas,25.07835,-77.3383,Avion,1851.66,Enero,2015
+Eleuthera,Bahamas,24.93038,-76.1921,Avion,116.67,Enero,2015
+Nassau,Bahamas,25.07835,-77.3383,Avion,116.67,Enero,2015
+Houston,EEUU,29.75894,-95.3677,Avion,1851.66,Enero,2015
+Toronto,Canadá,43.65348,-79.3839,Avion,2094.17,Enero,2015
+Buenos Aires,Argentina,-34.6076,-58.4371,Avion,8956.9,Enero,2015
+San Luis,Argentina,-33.2762,-65.9516,Auto,708.6,Julio,2015
+San Fernando del Valle de Catamarca,Argentina,-28.4693,-65.789663,Auto,534.7,Julio,2015
+San Juan,Argentina,-30.7054,-69.1988,Auto,412.85,Julio,2015
+Buenos Aires,Argentina,-34.6076,-58.4371,Auto,1096.1,Julio,2015
+Lima,Perú,-12.0621,-77.0365,Avion,3132.39,Septiembre,2015
+Cancún,México,21.16179,-86.851,Avion,3846.57,Septiembre,2015
+Lima,Perú,-12.0621,-77.0365,Avion,3846.57,Septiembre,2015
+Buenos Aires,Argentina,-34.6076,-58.4371,Avion,3132.39,Septiembre,2015
+Londres,Reino Unido,51.50732,-0.127647,Avion,11130.36,Septiembre,2015
+Edimburgo,Reino Unido,51.67144,-1.28288,Tren,81.86,Septiembre,2015
+Londres,Reino Unido,51.50732,-0.127647,Tren,81.86,Septiembre,2015
+Berlin,Alemania,52.51704,13.38886,Avion,930.42,Octubre,2015
+Buenos Aires,Argentina,-34.6076,-58.4371,Avion,11911.28,Octubre,2015
+Punta del Este,Uruguay,-34.9632,-54.944,Auto,630.23,Enero,2016
+Buenos Aires,Argentina,-34.6076,-58.4371,Auto,630.23,Enero,2016
+Miami,EEUU,25.77417,-80.1936,Avion,7175.14,Enero,2016
+Orlando,EEUU,28.54211,-81.379,Auto,329.34,Enero,2016
+Miami,EEUU,25.77417,-80.1936,Auto,329.34,Enero,2016
+Turks and Caicos,Reino Unido,21.72147,-71.6202,Avion,981.67,Enero,2016
+Miami,EEUU,25.77417,-80.1936,Avion,981.67,Enero,2016
+Estambul,Turquía,41.00963,28.96517,Avion,12247.9,Julio,2016
+Praga,República Checa,50.05963,14.44646,Avion,1508.92,Julio,2016
+Viena,Austria,48.20835,16.3725,Auto,248.99,Julio,2016
+Bratislava,República Eslovaca,48.1517,17.10931,Auto,54.99,Julio,2016
+Budapest,Hungría,47.49799,19.04036,Auto,161.44,Julio,2016
+Atenas,Grecia,37.98394,23.728305,Avion,1124.45,Julio,2016
+Mykonos,Grecia,37.45142,25.3923,Barco,157.88,Julio,2016
+Efeso,Turquía,37.94045,27.33932,Barco,179.72,Julio,2016
+Patmos,Grecia,37.32475,26.53816,Barco,98.3,Julio,2016
+Creta,Grecia,35.30848,24.46332,Barco,291.21,Julio,2016
+Rodas,Grecia,36.17263,27.91942,Barco,326.25,Julio,2016
+Santorini,Grecia,36.40711,25.45666,Barco,222.25,Julio,2016
+Estambul,Turquía,41.00963,28.96517,Avion,595.32,Julio,2016
+Buenos Aires,Argentina,-34.6076,-58.4371,Avion,12247.9,Julio,2016
+Colonia del Sacramento,Uruguay,-34.4699,-57.8434,Barco,56.49,Diciembre,2016
+Punta del Este,Uruguay,-34.9632,-54.944,Auto,270.6,Diciembre,2017
+Colonia del Sacramento,Uruguay,-34.4699,-57.8434,Auto,270.6,Enero,2017
+Buenos Aires,Argentina,-34.6076,-58.4371,Barco,56.49,Enero,2017
+Miami,EEUU,25.77417,-80.1936,Avion,7175.14,Enero,2017
+Orlando,EEUU,28.54211,-81.379,Auto,329.34,Enero,2017
+Miami,EEUU,25.77417,-80.1936,Auto,329.34,Enero,2017
+Cozumel,México,20.43176,-86.9203,Barco,908.58,Enero,2017
+Roatan,Honduras,16.32742,-86.5365,Barco,458.15,Enero,2017
+Cayo San Jorge,Belice,17.55475,-88.0721,Barco,212.84,Enero,2017
+Gran Caimán,Islas Caimanes,19.32987,-81.1712,Barco,754.11,Enero,2017
+Miami,EEUU,25.77417,-80.1936,Barco,723.53,Febrero,2017
+Buenos Aires,Argentina,-34.4699,-57.8434,Avion,7175.14,Febrero,2017
+Nueva York,EEUU,40.71273,-74.006,Avion,8521.75,Julio,2017
+Lisboa,Portugal,38.70775,-9.136592,Avion,5422.65,Julio,2017
+Fátima,Portugal,39.59428,-8.64011,Auto,107.47,Julio,2017
+Córdoba,España,37.88458,-4.77601,Auto,385.23,Julio,2017
+Sevilla,España,37.38863,-5.99534,Auto,120.7,Julio,2017
+Malaga,España,36.7213,-4.42164,Auto,158.13,Julio,2017
+Granada,España,37.1735,-3.59953,Auto,88.68,Julio,2017
+Barcelona,España,41.38289,2.177432,Avion,88.68,Julio,2017
+Madrid,España,40.41671,-3.70358,Tren,505.69,Julio,2017
+Lisboa,Portugal,38.70775,-9.136592,Avion,682.55,Agosto,2017
+Nueva York,EEUU,40.71273,-74.006,Avion,5422.65,Agosto,2017
+Buenos Aires,Argentina,-34.4699,-57.8434,Avion,8521.75,Agosto,2017
+Colonia del Sacramento,Uruguay,-34.4699,-57.8434,Barco,56.49,Diciembre,2017
+Punta del Este,Uruguay,-34.9632,-54.944,Auto,270.6,Enero,2018
+Colonia del Sacramento,Uruguay,-34.4699,-57.8434,Auto,270.6,Enero,2018
+Buenos Aires,Argentina,-34.6076,-58.4371,Barco,56.49,Enero,2018
+Mar del Plata,Argentina,-37.9977,-57.5483,Auto,385.27,Enero,2018
+Buenos Aires,Argentina,-34.6076,-58.4371,Auto,385.27,Enero,2018
+Las Vegas,EEUU,36.16726,-115.149,Avion,9818.99,Enero,2018
+Honolulu,EEUU,21.30455,-157.856,Avion,4437.1,Enero,2018
+Maui,EEUU,20.80296,-156.311,Avion,169.74,Febrero,2018
+Las Vegas,EEUU,36.16726,-115.149,Avion,4330.33,Febrero,2018
+Buenos Aires,Argentina,-34.6076,-58.4371,Avion,9818.99,Febrero,2018
+Madrid,España,40.41671,-3.70358,Avion,10047.96,Julio,2018
+Roma,Italia,41.89332,12.48293,Avion,1362.95,Julio,2018
+Tropea,Italia,38.67538,15.89479,Auto,460.1,Julio,2018
+Taormina,Italia,37.85179,15.28565,Auto,105.9,Julio,2018
+Siracusa,Italia,37.06461,15.29072,Auto,87.53,Julio,2018
+Napoles,Italia,40.83593,14.24878,Tren,428.89,Julio,2018
+Dubrovnik,Croacia,42.65025,18.0925,Avion,377.28,Julio,2018
+Madrid,España,40.41671,-3.70358,Avion,1825.89,Agosto,2018
+Buenos Aires,Argentina,-34.6076,-58.4371,Avion,10047.96,Agosto,2018
+Colonia del Sacramento,Uruguay,-34.4699,-57.8434,Barco,56.49,Diciembre,2018
+Punta del Este,Uruguay,-34.9632,-54.944,Auto,270.6,Enero,2019
+Colonia del Sacramento,Uruguay,-34.4699,-57.8434,Auto,270.6,Enero,2019
+Buenos Aires,Argentina,-34.6076,-58.4371,Barco,56.49,Enero,2019
+Mar del Plata,Argentina,-37.9977,-57.5483,Auto,385.27,Enero,2019
+Buenos Aires,Argentina,-34.6076,-58.4371,Auto,385.27,Enero,2019
+Santo Domingo,Republica Dominicana,18.4802,-69.9421,Avion,6026.88,Enero,2019
+Bayahibe,Republica Dominicana,18.36871,-68.8397,Auto,116.95,Febrero,2019
+Santo Domingo,Republica Dominicana,18.4802,-69.9421,Auto,116.95,Febrero,2019
+Nueva York,EEUU,40.71273,-74.006,Avion,2502.29,Febrero,2019
+Buenos Aires,Argentina,-34.6076,-58.4371,Avion,8525.13,Febrero,2019
+Costa Esmeralda,Argentina,-37.0184,-56.7978,Auto,306.09,Marzo,2019
+Buenos Aires,Argentina,-34.6076,-58.4371,Auto,306.09,Marzo,2019
+Saladillo,Argentina,-35.6389,-59.7792,Auto,167.47,Abril,2019
+Buenos Aires,Argentina,-34.6076,-58.4371,Auto,167.47,Abril,2019
+Tel Aviv,Israel,32.0853,34.78181,Avion,12222.87,Julio,2019
+Jerusalem,Israel,31.79592,35.21198,Tren,51.8,Julio,2019
+Eilat,Israel,29.55694,34.9498,Avion,250.21,Julio,2019
+Aqaba,Jordania,29.5267,35.00782,Caminando,6.54,Julio,2019
+Eilat,Israel,29.55694,34.9498,Caminando,6.54,Julio,2019
+Tel Aviv,Israel,32.0853,34.78181,Avion,250.21,Agosto,2019
+Buenos Aires,Argentina,-34.6076,-58.4371,Avion,12222.87,Agosto,2019
+Colonia del Sacramento,Uruguay,-34.4699,-57.8434,Barco,56.49,Diciembre,2019
+Punta del Este,Uruguay,-34.9632,-54.944,Auto,270.6,Enero,2020
+Colonia del Sacramento,Uruguay,-34.4699,-57.8434,Auto,270.6,Enero,2020
+Buenos Aires,Argentina,-34.6076,-58.4371,Barco,56.49,Enero,2020
+Miami,EEUU,25.77417,-80.1936,Avion,7175.14,Enero,2020
+Bimini,Bahamas,25.70319,-79.2815,Avion,91.7,Enero,2020
+Miami,EEUU,25.77417,-80.1936,Avion,91.7,Enero,2020
+Orlando,EEUU,28.54211,-81.379,Auto,329.34,Febrero,2020
+Miami,EEUU,25.77417,-80.1936,Auto,329.34,Febrero,2020
+Buenos Aires,Argentina,-34.6076,-58.4371,Avion,7175.14,Febrero,2020
+Saladillo,Argentina,-35.6389,-59.7792,Auto,167.47,Enero,2021
+Buenos Aires,Argentina,-34.6076,-58.4371,Auto,167.47,Enero,2021
+Saladillo,Argentina,-35.6389,-59.7792,Auto,167.47,Febrero,2021
+Buenos Aires,Argentina,-34.6076,-58.4371,Auto,167.47,Febrero,2021
+Miramar,Argentina,-38.2704,-57.8388,Auto,410.77,Marzo,2021
+Buenos Aires,Argentina,-34.6076,-58.4371,Auto,410.77,Marzo,2021
+Orlando,EEUU,28.54211,-81.379,Avion,7425.3,Julio,2021
+Tampa,EEUU,27.94776,-82.4584,Auto,124.68,Agosto,2021
+Miami,EEUU,25.77417,-80.1936,Auto,329.95,Agosto,2021
+Buenos Aires,Argentina,-34.6076,-58.4371,Avion,7175.14,Agosto,2021
