@@ -31,19 +31,19 @@ Washington,EEUU,38.89499,-77.0366,Auto,328.39,Septiembre,2012
 Nueva York,EEUU,40.71273,-74.006,Auto,328.39,Septiembre,2012
 São Paulo,Brasil,-23.5507,-46.6334,Avion,7685.26,Septiembre,2012
 Buenos Aires,Argentina,-34.6076,-58.4371,Avion,1678.72,Septiembre,2012
-San Juan,EEUU,18.4653,-66.1167,Avion,5956.77,Enero,2013
+San Juan de PR,EEUU,18.4653,-66.1167,Avion,5956.77,Enero,2013
 Tortola,Islas Vírgenes Británicas,18.42106,-64.6388,Barco,155.96,Enero,2013
 Guadalupe,Francia,16.23051,-61.6871,Barco,396.82,Enero,2013
 Bridgetown,Barbados,13.09778,-59.6184,Barco,413.32,Enero,2013
 Sint Maarten,Holanda,18.04237,-63.055,Barco,661.55,Enero,2013
 Saint Kitts,Saint Kitts and Nevis,17.25051,-62.6726,Barco,96.92,Enero,2013
-San Juan de Puerto Rico,EEUU,25.82473,-97.4824,Barco,3712.06,Enero,2013
+San Juan,EEUU,25.82473,-97.4824,Barco,3712.06,Enero,2013
 Miami,EEUU,25.77417,-80.1936,Avion,1729.48,Enero,2013
 Buenos Aires,Argentina,-34.6076,-58.4371,Avion,7175.14,Enero,2013
 Punta del Este,Uruguay,-34.9632,-54.944,Auto,630.23,Abril,2013
 Buenos Aires,Argentina,-34.6076,-58.4371,Auto,630.23,Abril,2013
 Córdoba,Argentina,-31.4173,-64.1833,Auto,642.37,Julio,2013
-San Fernando del Valle de Catamarca,Argentina,-28.4693,-65.789663,Auto,362.47,Julio,2013
+Catamarca,Argentina,-28.4693,-65.789663,Auto,362.47,Julio,2013
 La Rioja,Argentina,-29.4069,-66.8498,Auto,146.66,Julio,2013
 San Juan,Argentina,-30.7054,-69.1988,Auto,268.23,Julio,2013
 Buenos Aires,Argentina,-34.6076,-58.4371,Auto,1096.1,Julio,2013
@@ -64,7 +64,7 @@ Buenos Aires,Argentina,-34.6076,-58.4371,Avion,1678.72,Septiembre,2013
 Pinamar,Argentina,-37.1099,-56.8539,Auto,312.67,Diciembre,2014
 Buenos Aires,Argentina,-34.6076,-58.4371,Auto,312.67,Enero,2014
 Panamá,Panamá,9.091308,-79.3737,Avion,5648,Enero,2014
-Cartagena de Indias,Colombia,10.41958,-75.5271,Barco,446.63,Enero,2014
+Cartagena,Colombia,10.41958,-75.5271,Barco,446.63,Enero,2014
 Bonaire,Holanda,12.167,-68.291,Barco,812.52,Enero,2014
 Aruba,Holanda,12.4903,-69.961,Barco,184.93,Enero,2014
 Curaçao,Holanda,12.1845,-68.9641,Barco,113.5,Enero,2014
@@ -91,7 +91,7 @@ Houston,EEUU,29.75894,-95.3677,Avion,1851.66,Enero,2015
 Toronto,Canadá,43.65348,-79.3839,Avion,2094.17,Enero,2015
 Buenos Aires,Argentina,-34.6076,-58.4371,Avion,8956.9,Enero,2015
 San Luis,Argentina,-33.2762,-65.9516,Auto,708.6,Julio,2015
-San Fernando del Valle de Catamarca,Argentina,-28.4693,-65.789663,Auto,534.7,Julio,2015
+Catamarca,Argentina,-28.4693,-65.789663,Auto,534.7,Julio,2015
 San Juan,Argentina,-30.7054,-69.1988,Auto,412.85,Julio,2015
 Buenos Aires,Argentina,-34.6076,-58.4371,Auto,1096.1,Julio,2015
 Lima,Perú,-12.0621,-77.0365,Avion,3132.39,Septiembre,2015
@@ -124,9 +124,9 @@ Rodas,Grecia,36.17263,27.91942,Barco,326.25,Julio,2016
 Santorini,Grecia,36.40711,25.45666,Barco,222.25,Julio,2016
 Estambul,Turquía,41.00963,28.96517,Avion,595.32,Julio,2016
 Buenos Aires,Argentina,-34.6076,-58.4371,Avion,12247.9,Julio,2016
-Colonia del Sacramento,Uruguay,-34.4699,-57.8434,Barco,56.49,Diciembre,2016
+Colonia,Uruguay,-34.4699,-57.8434,Barco,56.49,Diciembre,2016
 Punta del Este,Uruguay,-34.9632,-54.944,Auto,270.6,Diciembre,2017
-Colonia del Sacramento,Uruguay,-34.4699,-57.8434,Auto,270.6,Enero,2017
+Colonia,Uruguay,-34.4699,-57.8434,Auto,270.6,Enero,2017
 Buenos Aires,Argentina,-34.6076,-58.4371,Barco,56.49,Enero,2017
 Miami,EEUU,25.77417,-80.1936,Avion,7175.14,Enero,2017
 Orlando,EEUU,28.54211,-81.379,Auto,329.34,Enero,2017
@@ -149,9 +149,9 @@ Madrid,España,40.41671,-3.70358,Tren,505.69,Julio,2017
 Lisboa,Portugal,38.70775,-9.136592,Avion,682.55,Agosto,2017
 Nueva York,EEUU,40.71273,-74.006,Avion,5422.65,Agosto,2017
 Buenos Aires,Argentina,-34.4699,-57.8434,Avion,8521.75,Agosto,2017
-Colonia del Sacramento,Uruguay,-34.4699,-57.8434,Barco,56.49,Diciembre,2017
+Colonia,Uruguay,-34.4699,-57.8434,Barco,56.49,Diciembre,2017
 Punta del Este,Uruguay,-34.9632,-54.944,Auto,270.6,Enero,2018
-Colonia del Sacramento,Uruguay,-34.4699,-57.8434,Auto,270.6,Enero,2018
+Colonia,Uruguay,-34.4699,-57.8434,Auto,270.6,Enero,2018
 Buenos Aires,Argentina,-34.6076,-58.4371,Barco,56.49,Enero,2018
 Mar del Plata,Argentina,-37.9977,-57.5483,Auto,385.27,Enero,2018
 Buenos Aires,Argentina,-34.6076,-58.4371,Auto,385.27,Enero,2018
@@ -169,9 +169,9 @@ Napoles,Italia,40.83593,14.24878,Tren,428.89,Julio,2018
 Dubrovnik,Croacia,42.65025,18.0925,Avion,377.28,Julio,2018
 Madrid,España,40.41671,-3.70358,Avion,1825.89,Agosto,2018
 Buenos Aires,Argentina,-34.6076,-58.4371,Avion,10047.96,Agosto,2018
-Colonia del Sacramento,Uruguay,-34.4699,-57.8434,Barco,56.49,Diciembre,2018
+Colonia,Uruguay,-34.4699,-57.8434,Barco,56.49,Diciembre,2018
 Punta del Este,Uruguay,-34.9632,-54.944,Auto,270.6,Enero,2019
-Colonia del Sacramento,Uruguay,-34.4699,-57.8434,Auto,270.6,Enero,2019
+Colonia,Uruguay,-34.4699,-57.8434,Auto,270.6,Enero,2019
 Buenos Aires,Argentina,-34.6076,-58.4371,Barco,56.49,Enero,2019
 Mar del Plata,Argentina,-37.9977,-57.5483,Auto,385.27,Enero,2019
 Buenos Aires,Argentina,-34.6076,-58.4371,Auto,385.27,Enero,2019
@@ -191,9 +191,9 @@ Aqaba,Jordania,29.5267,35.00782,Caminando,6.54,Julio,2019
 Eilat,Israel,29.55694,34.9498,Caminando,6.54,Julio,2019
 Tel Aviv,Israel,32.0853,34.78181,Avion,250.21,Agosto,2019
 Buenos Aires,Argentina,-34.6076,-58.4371,Avion,12222.87,Agosto,2019
-Colonia del Sacramento,Uruguay,-34.4699,-57.8434,Barco,56.49,Diciembre,2019
+Colonia,Uruguay,-34.4699,-57.8434,Barco,56.49,Diciembre,2019
 Punta del Este,Uruguay,-34.9632,-54.944,Auto,270.6,Enero,2020
-Colonia del Sacramento,Uruguay,-34.4699,-57.8434,Auto,270.6,Enero,2020
+Colonia,Uruguay,-34.4699,-57.8434,Auto,270.6,Enero,2020
 Buenos Aires,Argentina,-34.6076,-58.4371,Barco,56.49,Enero,2020
 Miami,EEUU,25.77417,-80.1936,Avion,7175.14,Enero,2020
 Bimini,Bahamas,25.70319,-79.2815,Avion,91.7,Enero,2020
