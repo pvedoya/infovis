@@ -9,13 +9,7 @@ Raw data: la idea es juntar informacion de los viajes que hize historicamente, c
 6. Fecha de partida
 7. Transporte mediante el cual llegue
 
-Donde un ejemplo de entrada es:
-|Ciudad|Latitud|Longitud|Pais|Llegada|Partida|Transporte|
-|-------|-------|-------|
-|Roma|+41.9028|+12.4964|Italia|21/07/2019|23/07/2021|Avion|
-|Napoles|+40.8518|+14.2681|Italia|23/07/2019|24/07/2021|Auto|
-
-* [Datos cargados para usar en los graficos](https://github.com/pvedoya/infovis/blob/gh-pages/datos-personales/Historial%20Viajes%202011-2021.csv)
+[Este es el conjunto de datos utilizado para los graficos](https://github.com/pvedoya/infovis/blob/gh-pages/datos-personales/Historial%20Viajes%202011-2021.csv)
 
 **Un ejemplo de los datos puede ser encontrado en el archivo Historial Viajes 2011-2021.csv**
 
