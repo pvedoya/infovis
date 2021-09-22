@@ -15,7 +15,9 @@ Donde un ejemplo de entrada es:
 |Roma|+41.9028|+12.4964|Italia|21/07/2019|23/07/2021|Avion|
 |Napoles|+40.8518|+14.2681|Italia|23/07/2019|24/07/2021|Auto|
 
-Graficos: 
+**Un ejemplo de los datos puede ser encontrado en el archivo datos.tsv**
+
+(Antes) La idea de los graficos que se van a generar: 
 <img src="./Graficos 1.jpeg"/>
 1. Grafico 1: heatmap de ciudades visitadas en base a las coordenadas geograficas
 2. Grafico 2: piechart con el porcentaje de transporte que use para llegar a cada ciudad
