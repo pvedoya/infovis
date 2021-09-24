@@ -89,8 +89,10 @@
                vizElement.parentNode.insertBefore(scriptElement, vizElement);  
                
                var elements = document.getElementsByClassName('tab-toolbar');
+                console.log('aca no');
                while(elements.length > 0){
                   elements[0].parentNode.removeChild(elements[0]);
+                  console.log('aca');
                }
             </script>
             <div class="flourish-embed" data-src="story/992915">
