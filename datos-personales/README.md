@@ -23,3 +23,5 @@ Raw data: la idea es juntar informacion de los viajes que hize historicamente, c
 <img src="./Graficos 3.jpeg"/>
 1. Grafico 5(necesito distancia de bs as a cada ciudad): grafico de kms viajados por año 
 2. Grafico 6: heatmap de que dias de cada mes suelo viajar
+
+[El trabajo final se puede ver haciendo click aqui](https://pvedoya.github.io/infovis/datos-personales/index.html)
