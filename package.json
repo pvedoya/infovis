@@ -1,0 +1,20 @@
+{
+  "name": "tp-final-infovis",
+  "version": "1.0.0",
+  "description": "RESTful API to acces PostgreSQL db",
+  "main": "app.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pvedoya/infovis.git"
+  },
+  "author": "Pedro Vedoya",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pvedoya/infovis/issues"
+  },
+  "homepage": "https://github.com/pvedoya/infovis#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
