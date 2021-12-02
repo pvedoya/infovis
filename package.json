@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "RESTful API to acces PostgreSQL db",
   "main": "app.js",
-  "scripts": {},
+  "scripts": {
+    "serve": "nodemon app.js"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/pvedoya/infovis.git"
@@ -15,6 +17,11 @@
   },
   "homepage": "https://github.com/pvedoya/infovis#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "pg": "^8.7.1",
+    "plotly": "^1.0.6"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
   }
 }
