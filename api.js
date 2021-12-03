@@ -55,9 +55,24 @@ const getNonPositive = async (request, response) => {
   });
 };
 
+const getTableElectorsAndVotes = async (request, response) => {
+  let distrito = request.query.distrito;
+  if(distrito == null) {
+    distrito = "%";
+  }
+  const queryString = "SELECT Distrito, Seccion, Mesa, electores, votos "+
+                      "FROM elecciones " +
+                      "WHERE Distrito LIKE $1 AND Cargo LIKE 'DIPUTADOS NACIONALES'";
+
+  pool.query(queryString, [distrito], (error, results) => {
+    response.status(200).json(results.rows);
+  });
+};
+
 module.exports = {
   getEntries,
   getCabaResults,
   getCabaSectionResults,
-  getNonPositive
+  getNonPositive,
+  getTableElectorsAndVotes
 }

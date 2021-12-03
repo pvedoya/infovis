@@ -8,6 +8,7 @@ app.get('/votos-provincia/', api.getEntries);
 app.get('/caba-results/', api.getCabaResults);
 app.get('/caba-section-results/', api.getCabaSectionResults);
 app.get('/non-positive-results/', api.getNonPositive);
+app.get('/electors-and-votes/', api.getTableElectorsAndVotes);
 
 app.listen(port, () => {
   console.log('Elections app is running on port ' + port);
