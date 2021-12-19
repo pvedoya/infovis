@@ -156,6 +156,67 @@ const getCabaAgrupationPercentagesPerSection = async (request, response) => {
   });
 };
 
+const getCabaResultsByAgr = async (request, response) => {
+  let cargo = request.query.cargo;
+  const queryString = "SELECT agrupacion, SUM(CAST(votos AS INTEGER)) AS votos " +
+                      "FROM public.elecciones " +
+                      "WHERE distrito LIKE 'Ciudad Aut%noma de Buenos Aires' AND cargo LIKE $1 AND agrupacion IS NOT NULL " +
+                      "GROUP BY agrupacion " +
+                      "ORDER BY votos ";
+
+  pool.query(queryString, [cargo], (error, results) => {
+    response.status(200).json(results.rows);
+  });
+};
+
+const getTipoVotos = async (request, response) => {
+  let cargo = request.query.cargo;
+  const queryString = "SELECT tipovotos, SUM(CAST(votos AS INTEGER)) AS votos " +
+                      "FROM public.elecciones " +
+                      "WHERE distrito LIKE 'Ciudad Aut%noma de Buenos Aires' AND cargo LIKE $1 " +
+                      "GROUP BY tipovotos " +
+                      "ORDER BY votos ";
+
+  pool.query(queryString, [cargo], (error, results) => {
+    response.status(200).json(results.rows);
+  });
+};
+
+const getVotosPosNeg = async (request, response) => {
+  let cargo = request.query.cargo;
+  const queryString = "SELECT 'no positivo' as tipovotos, SUM(CAST(votos AS INTEGER)) AS votos " +
+                      "FROM public.elecciones " +
+                      "WHERE distrito LIKE 'Ciudad Aut%noma de Buenos Aires' AND cargo LIKE $1 AND tipovotos IN ('nulos', 'recurridos', 'blancos', 'impugnados') " +
+                      "UNION SELECT tipovotos, SUM(CAST(votos AS INTEGER)) AS votos " +
+                      "FROM public.elecciones " +
+                      "WHERE distrito LIKE 'Ciudad Aut%noma de Buenos Aires' AND cargo LIKE $1 AND tipovotos IN ('positivo') " +
+                      "GROUP BY tipovotos ";
+
+  pool.query(queryString, [cargo], (error, results) => {
+    response.status(200).json(results.rows);
+  });
+};
+
+const getFecha = async (request, response) => {
+  let cargo = request.query.cargo;
+  const queryString = "SELECT agrupacion, SUM(CAST(votos as INTEGER)) as votos, fecha " +
+                      "FROM public.elecciones " +
+                      "WHERE distrito LIKE 'Ciudad Aut%noma de Buenos Aires' AND cargo LIKE $1 AND agrupacion IS NOT NULL " +
+                      "GROUP BY fecha, agrupacion ";
+
+  pool.query(queryString, [cargo], (error, results) => {
+    if (results != undefined){
+      let answer = [];
+      results.rows.forEach(element => {
+        answer.push({agrupacion: element.agrupacion, votos: parseInt(element.votos), fecha: element.fecha});
+      });
+      response.status(200).json(answer);
+    }
+    else
+      response.status(200).json([]);
+  });
+};
+
 module.exports = {
   getEntries,
   getCabaResults,
@@ -165,5 +226,9 @@ module.exports = {
   getCabaPositions,
   getCabaAgrupationResults,
   getTotalVotesForAgrupations,
-  getCabaAgrupationPercentagesPerSection
+  getCabaAgrupationPercentagesPerSection,
+  getCabaResultsByAgr,
+  getTipoVotos,
+  getVotosPosNeg,
+  getFecha
 }
