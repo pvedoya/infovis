@@ -131,7 +131,7 @@ big = ["Buenos Aires", "Santa Cruz", "Chubut", "Río Negro", "Córdoba", "Salta"
 big_provinces = df[df['distrito'].isin(big)].groupby(by=["agrupacion"])['votos'].agg('sum').to_frame().reset_index()
 big_provinces = big_provinces[big_provinces['votos'] >= 100000]
 
-alt.Chart(big_provinces, title="Resultados en provincias con bajo IDH").mark_bar().encode(
+alt.Chart(big_provinces, title="Resultados en provincias grandes").mark_bar().encode(
   x=alt.X('sum(votos)', axis=alt.Axis(title='Votos')),
   y=alt.Y('agrupacion', sort='-x', axis=alt.Axis(title='Agrupación')),
   color=alt.Color('agrupacion:N', scale=alt.Scale(domain = ["JUNTOS POR EL CAMBIO", "FRENTE DE TODOS", "FRENTE DE IZQUIERDA Y DE TRABAJADORES - UNIDAD", "HACEMOS POR CÓRDOBA", "AVANZA LIBERTAD", "FRENTE VAMOS CON VOS", "+ VALORES"], range=["yellow", "cyan", "red", "orange", "blue", "pink", "grey"]))
@@ -142,7 +142,7 @@ small = ["Ciudad Autónoma de Buenos Aires", "Tierra del Fuego, Antártida e Isl
 small_provinces = df[df['distrito'].isin(small)].groupby(by=["agrupacion"])['votos'].agg('sum').to_frame().reset_index()
 small_provinces = small_provinces[small_provinces['votos'] >= 100000]
 
-alt.Chart(small_provinces, title="Resultados en provincias con bajo IDH").mark_bar().encode(
+alt.Chart(small_provinces, title="Resultados en provincias chicas").mark_bar().encode(
   x=alt.X('sum(votos)', axis=alt.Axis(title='Votos')),
   y=alt.Y('agrupacion', sort='-x', axis=alt.Axis(title='Agrupación')),
   color=alt.Color('agrupacion:N', scale=alt.Scale(domain = ["JUNTOS POR EL CAMBIO", "FRENTE DE TODOS", "FRENTE DE IZQUIERDA Y DE TRABAJADORES - UNIDAD", "LA LIBERTAD AVANZA", "FRENTE RENOVADOR DE LA CONCORDIA", "FUERZA REPUBLICANA"], range=["yellow", "cyan", "red", "green", "orange", "blue"]))

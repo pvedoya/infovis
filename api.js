@@ -10,6 +10,9 @@ const pool = new Pool({
 
 const getEntries = async (request, response) => {
   let cargo = request.query.cargo;
+  if(cargo == null) {
+    cargo = "%";
+  }
   const queryString = "SELECT Agrupacion, Distrito, votos "+
                       "FROM elecciones " +
                       "WHERE Cargo LIKE $1 ";
@@ -21,6 +24,9 @@ const getEntries = async (request, response) => {
 
 const getCabaResults = async (request, response) => {
   let cargo = request.query.cargo;
+  if(cargo == null) {
+    cargo = "%";
+  }
   const queryString = "SELECT Agrupacion, votos "+
                       "FROM elecciones " +
                       "WHERE Distrito LIKE 'Ciudad Aut%noma de Buenos Aires' AND Cargo LIKE $1 ";
@@ -32,6 +38,9 @@ const getCabaResults = async (request, response) => {
 
 const getCabaSectionResults = async (request, response) => {
   let cargo = request.query.cargo;
+  if(cargo == null) {
+    cargo = "%";
+  }
   const queryString = "SELECT Agrupacion, Seccion, votos "+
                       "FROM elecciones " +
                       "WHERE Distrito LIKE 'Ciudad Aut%noma de Buenos Aires' AND Cargo LIKE $1 ";
