@@ -65,7 +65,7 @@ df = pd.DataFrame.from_records(response)
 df['votos'] = pd.to_numeric(df['votos'])
 df = df[df['seccion'].isin(top_districts)].groupby(by=["seccion", "tipovotos"])['votos'].agg('sum').to_frame().reset_index()
 
-alt.Chart(df, title="Votos no positivos en CABA").mark_bar(
+alt.Chart(df, title="Votos no positivos en PBA").mark_bar(
   cornerRadiusTopLeft = 3,
   cornerRadiusTopRight = 3
 ).encode(
