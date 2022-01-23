@@ -1,5 +1,7 @@
 const Pool = require('pg').Pool;
 
+const Joi = require('joi');
+
 const pool = new Pool({
   user: 'petrvs',
   host: 'localhost',
@@ -7,6 +9,207 @@ const pool = new Pool({
   password: 'infovis-final',
   port: 5432
 });
+
+
+// -------------------------------------------------------------------------
+
+const validateVotosParams = (params) => {
+  let schema = { 
+    groupBy: Joi.string(),
+    mesa: Joi.number().min(0),
+    seccion: Joi.number().min(0),
+    distrito : Joi.number().min(0),
+    cargo : Joi.number().min(0),
+    agrupacion : Joi.number().min(0),
+    fecha : Joi.string()
+  };
+         
+  if (!Joi.validate(params,schema))
+    return false;
+
+  if(params.groupBy == undefined)   //Si no hay groupBy listo, sino lo tengo que revisar
+    return true;
+
+            
+  const groupByValue = params.groupBy.toLowerCase();
+
+  //Check if the parameter is one of the sortBy values
+
+  let groupByParameters = ['idmesa', 'idseccion', 'iddistrito', 'idagrupacion', 'idtipo', 'idcargo', 'fecha'];
+
+  let i;
+  let elem;
+  let found = false;
+  for(i = 0; !found && i < groupByParameters.length; i++){
+      elem = groupByParameters[i].toLowerCase();
+      if(groupByValue == elem.toLowerCase()){                    
+          found = true;
+      }
+  }
+
+  return found;
+}
+
+const parseWhere = (params) => {
+  let whereParameters = ['idmesa', 'idseccion', 'iddistrito', 'idagrupacion', 'idtipo', 'idcargo', 'fecha'];
+  const paramsPresent = Object.keys(params);
+  let addedString = "";
+
+  if(paramsPresent.length > 0 && paramsPresent.every(v => whereParameters.includes(v))){
+    addedString = "WHERE ";
+
+    paramsPresent.forEach(function(elem) {
+      addedString += elem + " = " + params[elem] + " AND ";
+    });
+
+    //Borrar ultimo and
+    addedString = addedString.slice(0, -4);
+    
+    return addedString;
+  }
+  return '';
+}
+
+// -------------------------------------------------------------------------
+
+const getVotos = async (request, response) => {
+
+  const {error} = PlayerApi.validateVotosParams(request.query); 
+  if(error){
+   //400 Bad Request
+   return res.status(400).send(generateError(error.details[0].message));
+  }
+
+  let queryString = "SELECT * FROM votos ";
+  if (request.query.groupBy != undefined)
+    queryString = "SELECT " + request.query.groupBy + ", SUM(votos) FROM votos "
+
+  //Agrego joins si necesito información que no está en la tabla votos
+  if (request.query.groupBy.toLowerCase() == "iddistrito" || request.query.iddistrito != undefined)
+    queryString += "NATURAL JOIN mesas NATURAL JOIN secciones ";
+  else if (request.query.groupBy.toLowerCase() == "idseccion" || request.query.idseccion != undefined)
+    queryString += "NATURAL JOIN mesas ";
+  
+  //parseo
+  queryString += parseWhere(request.query);
+  if (request.query.groupBy != undefined)
+    queryString += "GROUP BY " + request.query.groupBy;
+
+  queryString += ";"
+
+
+  pool.query(queryString, undefined, async(error, results) => {
+    if (results != undefined)
+      response.status(200).json(results.rows);
+    else
+      response.status(200).json([]);
+  });
+};
+
+const getCargos = async (request, response) => {
+
+  let queryString = "SELECT * FROM cargos ";
+  if (request.params.id != undefined){
+    queryString += "WHERE idcargo = " + request.params.id;
+  }
+  queryString += ";"
+
+
+  pool.query(queryString, undefined, async(error, results) => {
+    if (results != undefined)
+      response.status(200).json(results.rows);
+    else
+      response.status(200).json([]);
+  });
+};
+
+const getAgrupaciones = async (request, response) => {
+
+  let queryString = "SELECT * FROM agrupaciones ";
+  if (request.params.id != undefined){
+    queryString += "WHERE idagrupacion = " + request.params.id;
+  }
+  queryString += ";"
+
+
+  pool.query(queryString, undefined, async(error, results) => {
+    if (results != undefined)
+      response.status(200).json(results.rows);
+    else
+      response.status(200).json([]);
+  });
+};
+
+const getMesas = async (request, response) => {
+
+  let queryString = "SELECT * FROM mesas ";
+  if (request.params.id != undefined){
+    queryString += "WHERE idmesa = " + request.params.id;
+  }
+  queryString += ";"
+
+
+  pool.query(queryString, undefined, async(error, results) => {
+    if (results != undefined)
+      response.status(200).json(results.rows);
+    else
+      response.status(200).json([]);
+  });
+};
+
+const getSecciones = async (request, response) => {
+
+  let queryString = "SELECT * FROM secciones ";
+  if (request.params.id != undefined){
+    queryString += "WHERE idseccion = " + request.params.id;
+  }
+  queryString += ";"
+
+
+  pool.query(queryString, undefined, async(error, results) => {
+    if (results != undefined)
+      response.status(200).json(results.rows);
+    else
+      response.status(200).json([]);
+  });
+};
+
+const getDistritos = async (request, response) => {
+
+  let queryString = "SELECT * FROM distritos ";
+  if (request.params.id != undefined){
+    queryString += "WHERE iddistrito = " + request.params.id;
+  }
+  queryString += ";"
+
+
+  pool.query(queryString, undefined, async(error, results) => {
+    if (results != undefined)
+      response.status(200).json(results.rows);
+    else
+      response.status(200).json([]);
+  });
+};
+
+const getTiposVoto = async (request, response) => {
+  
+  let queryString = "SELECT * FROM tipovoto ";
+  if (request.params.id != undefined){
+    queryString += "WHERE idtipo = " + request.params.id;
+  }
+  queryString += ";"
+
+
+  pool.query(queryString, undefined, async(error, results) => {
+    if (results != undefined)
+      response.status(200).json(results.rows);
+    else
+      response.status(200).json([]);
+  });
+};
+
+// -------------------------------------------------------------------------
+
 
 const getEntries = async (request, response) => {
   let cargo = request.query.cargo;
@@ -218,6 +421,15 @@ const getFecha = async (request, response) => {
 };
 
 module.exports = {
+  getVotos,
+  getAgrupaciones,
+  getCargos,
+  getMesas,
+  getDistritos,
+  getSecciones,
+  getTiposVoto,
+
+
   getEntries,
   getCabaResults,
   getCabaSectionResults,

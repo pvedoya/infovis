@@ -23,6 +23,21 @@ app.get('/tipo-votos/', api.getTipoVotos);
 app.get('/votos-posneg/', api.getVotosPosNeg);
 app.get('/fecha/', api.getFecha);
 
+
+// -------------------------------------------------------------------------
+
+app.get('/votos/', api.getVotos);
+app.get('/cargos/:id?', api.getCargos);
+app.get('/agrupaciones/:id?', api.getAgrupaciones);
+app.get('/mesas/:id?', api.getMesas);
+app.get('/secciones/:id?', api.getSecciones);
+app.get('/distritos/:id?', api.getDistritos);
+app.get('/tiposVoto/:id?', api.getTiposVoto);
+
+
+// -------------------------------------------------------------------------
+
+
 app.listen(port, () => {
   console.log('Elections app is running on port ' + port);
 });
