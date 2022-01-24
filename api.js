@@ -30,7 +30,6 @@ const validateVotosParams = (params) => {
   if(params.groupBy == undefined)   //Si no hay groupBy listo, sino lo tengo que revisar
     return true;
 
-            
   const groupByValue = params.groupBy.toLowerCase();
 
   //Check if the parameter is one of the sortBy values
@@ -52,7 +51,11 @@ const validateVotosParams = (params) => {
 
 const parseWhere = (params) => {
   let whereParameters = ['idmesa', 'idseccion', 'iddistrito', 'idagrupacion', 'idtipo', 'idcargo', 'fecha'];
-  const paramsPresent = Object.keys(params);
+  let paramsPresent = Object.keys(params);
+  const index = paramsPresent.indexOf('groupBy'); //Elimino groupBy de parámetros presentes porque no representa un WHERE
+  if (index > -1) {
+    paramsPresent.splice(index, 1);
+  }
   let addedString = "";
 
   if(paramsPresent.length > 0 && paramsPresent.every(v => whereParameters.includes(v))){
@@ -74,7 +77,7 @@ const parseWhere = (params) => {
 
 const getVotos = async (request, response) => {
 
-  const {error} = PlayerApi.validateVotosParams(request.query); 
+  const {error} = validateVotosParams(request.query); 
   if(error){
    //400 Bad Request
    return res.status(400).send(generateError(error.details[0].message));
@@ -82,12 +85,12 @@ const getVotos = async (request, response) => {
 
   let queryString = "SELECT * FROM votos ";
   if (request.query.groupBy != undefined)
-    queryString = "SELECT " + request.query.groupBy + ", SUM(votos) FROM votos "
+    queryString = "SELECT " + request.query.groupBy + ", SUM(votos) as votos FROM votos "
 
   //Agrego joins si necesito información que no está en la tabla votos
-  if (request.query.groupBy.toLowerCase() == "iddistrito" || request.query.iddistrito != undefined)
+  if ((request.query.groupBy != undefined && request.query.groupBy.toLowerCase() == "iddistrito") || request.query.iddistrito != undefined)
     queryString += "NATURAL JOIN mesas NATURAL JOIN secciones ";
-  else if (request.query.groupBy.toLowerCase() == "idseccion" || request.query.idseccion != undefined)
+  else if ((request.query.groupBy != undefined &&request.query.groupBy.toLowerCase() == "idseccion") || request.query.idseccion != undefined)
     queryString += "NATURAL JOIN mesas ";
   
   //parseo
@@ -96,7 +99,6 @@ const getVotos = async (request, response) => {
     queryString += "GROUP BY " + request.query.groupBy;
 
   queryString += ";"
-
 
   pool.query(queryString, undefined, async(error, results) => {
     if (results != undefined)

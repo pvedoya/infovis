@@ -17,9 +17,12 @@
   },
   "homepage": "https://github.com/pvedoya/infovis#readme",
   "dependencies": {
+    "@hapi/joi": "^15.0.3",
     "express": "^4.17.1",
+    "joi": "^13.7.0",
     "pg": "^8.7.1",
-    "plotly": "^1.0.6"
+    "plotly": "^1.0.6",
+    "swagger-ui-express": "^4.3.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.15"
