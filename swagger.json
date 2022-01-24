@@ -42,6 +42,10 @@
     {
       "name": "tiposVoto",
       "description": "Información sobre tipos de voto"
+    },
+    {
+      "name": "porcentajes",
+      "description": "Información sobre porcentajes"
     }
   ],
   "schemes": [
@@ -95,11 +99,11 @@
             "type": "integer"
           },
           {
-            "name": "idagrupacion",
+            "name": "agrupacion",
             "in": "query",
-            "description": "Id de la agrupación",
+            "description": "nombre de la agrupación",
             "required": false,
-            "type": "integer"
+            "type": "string"
           },
           {
             "name": "fecha",
@@ -188,35 +192,50 @@
         }
       }
     },
-    "/agrupaciones/{id}": {
+    "/agrupaciones/{nombre}": {
       "get": {
         "tags": [
           "agrupaciones"
         ],
         "summary": "Encuentra agrupaciones",
-        "description": "Encuentra una agrupación en específico por id",
+        "description": "Encuentra una agrupación en específico por nombre",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "id",
+            "name": "nombre",
             "in": "path",
-            "description": "El id de la agrupación",
+            "description": "El nombre de la agrupación",
             "required": true,
-            "type": "integer"
+            "type": "string"
           }
         ],
         "responses": {
           "200": {
             "description": "Operación exitosa",
             "schema": {
-              "type": "object",
-              "example": {
-                "idagrupacion": 1,
-                "lista": 40,
-                "agrupacion": "Frente de Todos"
-              }
+              "type": "array",
+              "items": {
+                "type": "object"
+              },
+              "example": [
+                {
+                  "idagrupacion": 11,
+                  "lista": 501,
+                  "agrupacion": "JUNTOS POR EL CAMBIO"
+                },
+                {
+                  "idagrupacion": 190,
+                  "lista": 504,
+                  "agrupacion": "JUNTOS POR EL CAMBIO"
+                },
+                {
+                  "idagrupacion": 97,
+                  "lista": 503,
+                  "agrupacion": "JUNTOS POR EL CAMBIO"
+                }
+              ]
             }
           }
         }
@@ -256,6 +275,39 @@
       }
     },
     "/cargos/{id}": {
+      "get": {
+        "tags": [
+          "cargos"
+        ],
+        "summary": "Encuentra cargos",
+        "description": "Encuentra un cargo en específico por id",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "El id del cargo",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operación exitosa",
+            "schema": {
+              "type": "object",
+              "example": {
+                "idcargo": 1,
+                "cargo": "Diputados Nacionales"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/cargosParaDistrito/{id}": {
       "get": {
         "tags": [
           "cargos"
@@ -575,6 +627,62 @@
                 "iddistrito": 1,
                 "distrito": "Ciudad Autónoma de Buenos Aires"
               }
+            }
+          }
+        }
+      }
+    },
+    "/porcentajes": {
+      "get": {
+        "tags": [
+          "porcentajes"
+        ],
+        "summary": "Encuentra porcentajes de agrupaciones",
+        "description": "Encuentra los porcentajes de las agrupaciones en el distrito pedido para el cargo pedido",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "iddistrito",
+            "in": "query",
+            "description": "Id del distrito",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "idcargo",
+            "in": "query",
+            "description": "Id del cargo",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operación exitosa",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object"
+              },
+              "example": [
+                {
+                  "agrupacion": "AUTODETERMINACIÓN Y LIBERTAD",
+                  "seccion": "Comuna 14",
+                  "porcentaje": "2.27"
+                },
+                {
+                  "agrupacion": "AUTODETERMINACIÓN Y LIBERTAD",
+                  "seccion": "Comuna 15",
+                  "porcentaje": "4.18"
+                },
+                {
+                  "agrupacion": "FRENTE DE IZQUIERDA Y DE TRABAJADORES - UNIDAD",
+                  "seccion": "Comuna 01",
+                  "porcentaje": "7.17"
+                }
+              ]
             }
           }
         }
