@@ -1,0 +1,584 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Esta es una API que sirve contenido sobre las elecciones legislativas 2021 de Argentina y sus resultados. Este proyecto fue desarrollado como trabajo final para la materia  'Visualización de Información' en el ITBA.",
+    "version": "1.0.0",
+    "title": "Elecciones Legislativas 2021",
+    "contact": {
+      "name": "Grupo 7 - Monti, Quintairos, Vedoya"
+    }
+  },
+  "externalDocs": {
+    "description": "Repositorio del proyecto",
+    "url": "https://github.com/pvedoya/infovis"
+  },
+  "host": "localhost:5000",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "votos",
+      "description": "Información sobre votos"
+    },
+    {
+      "name": "agrupaciones",
+      "description": "Información sobre agrupaciones"
+    },
+    {
+      "name": "cargos",
+      "description": "Información sobre cargos"
+    },
+    {
+      "name": "mesas",
+      "description": "Información sobre mesas"
+    },
+    {
+      "name": "secciones",
+      "description": "Información sobre secciones"
+    },
+    {
+      "name": "distritos",
+      "description": "Información sobre distritos"
+    },
+    {
+      "name": "tiposVoto",
+      "description": "Información sobre tipos de voto"
+    }
+  ],
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/votos": {
+      "get": {
+        "tags": [
+          "votos"
+        ],
+        "summary": "Encuentra votos",
+        "description": "Encuentra los votos que cumplan con ciertos filtros y agrupados de la forma pedida",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "groupBy",
+            "in": "query",
+            "description": "Atributo por el cual se agrupan los votos",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "idmesa",
+            "in": "query",
+            "description": "Id de la mesa",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "idseccion",
+            "in": "query",
+            "description": "Id de la seccion",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "iddistrito",
+            "in": "query",
+            "description": "Id del distrito",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "idcargo",
+            "in": "query",
+            "description": "Id del cargo",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "idagrupacion",
+            "in": "query",
+            "description": "Id de la agrupación",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "fecha",
+            "in": "query",
+            "description": "Fecha y hora en la que se contabilizaron",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operación exitosa",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object"
+              },
+              "example": [
+                {
+                  "idmesa": 204485,
+                  "idagrupacion": 1,
+                  "idtipo": 1,
+                  "idcargo": 2,
+                  "fecha": "20/11/2021::21:15",
+                  "votos": 24
+                },
+                {
+                  "idmesa": 172322,
+                  "idagrupacion": 1,
+                  "idtipo": 1,
+                  "idcargo": 3,
+                  "fecha": "20/11/2021::21:30",
+                  "votos": 12
+                },
+                {
+                  "idmesa": 233385,
+                  "idagrupacion": 3,
+                  "idtipo": 1,
+                  "idcargo": 2,
+                  "fecha": "20/11/2021::20:15",
+                  "votos": 31
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    "/agrupaciones": {
+      "get": {
+        "tags": [
+          "agrupaciones"
+        ],
+        "summary": "Encuentra agrupaciones",
+        "description": "Encuentra todas las agrupaciones presentes",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Operación exitosa",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object"
+              },
+              "example": [
+                {
+                  "idagrupacion": 44,
+                  "lista": 507,
+                  "agrupacion": "FRENTE DE TODOS"
+                },
+                {
+                  "idagrupacion": 11,
+                  "lista": 501,
+                  "agrupacion": "JUNTOS POR EL CAMBIO"
+                },
+                {
+                  "idagrupacion": 14,
+                  "lista": 504,
+                  "agrupacion": "LA LIBERTAD AVANZA"
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    "/agrupaciones/{id}": {
+      "get": {
+        "tags": [
+          "agrupaciones"
+        ],
+        "summary": "Encuentra agrupaciones",
+        "description": "Encuentra una agrupación en específico por id",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "El id de la agrupación",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operación exitosa",
+            "schema": {
+              "type": "object",
+              "example": {
+                "idagrupacion": 1,
+                "lista": 40,
+                "agrupacion": "Frente de Todos"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/cargos": {
+      "get": {
+        "tags": [
+          "cargos"
+        ],
+        "summary": "Encuentra cargos",
+        "description": "Encuentra todos los cargos presentes",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Operación exitosa",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object"
+              },
+              "example": [
+                {
+                  "idcargo": 3,
+                  "cargo": "DIPUTADOS NACIONALES"
+                },
+                {
+                  "idcargo": 6,
+                  "cargo": "DIPUTADOS PROVINCIALES"
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    "/cargos/{id}": {
+      "get": {
+        "tags": [
+          "cargos"
+        ],
+        "summary": "Encuentra cargos",
+        "description": "Encuentra un cargo en específico por id",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "El id del cargo",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operación exitosa",
+            "schema": {
+              "type": "object",
+              "example": {
+                "idcargo": 1,
+                "cargo": "Diputados Nacionales"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/tiposVoto": {
+      "get": {
+        "tags": [
+          "tiposVoto"
+        ],
+        "summary": "Encuentra tipos de voto",
+        "description": "Encuentra todos los tipos de voto presentes",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Operación exitosa",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object"
+              },
+              "example": [
+                {
+                  "idtipo": 1,
+                  "tipo": "blancos"
+                },
+                {
+                  "idtipo": 5,
+                  "tipo": "positivo"
+                },
+                {
+                  "idtipo": 6,
+                  "tipo": "recurridos"
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    "/tiposVoto/{id}": {
+      "get": {
+        "tags": [
+          "tiposVoto"
+        ],
+        "summary": "Encuentra tipos de voto",
+        "description": "Encuentra un tipo de voto en específico por id",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "El id del tipo de voto",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operación exitosa",
+            "schema": {
+              "type": "object",
+              "example": {
+                "idtipo": 1,
+                "tipo": "Positivo"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/mesas": {
+      "get": {
+        "tags": [
+          "mesas"
+        ],
+        "summary": "Encuentra mesas",
+        "description": "Encuentra todas las mesas presentes",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Operación exitosa",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object"
+              },
+              "example": [
+                {
+                  "idmesa": 1,
+                  "establecimiento": "Colegio Nuestra Señora María",
+                  "electores": 200,
+                  "idseccion": 1
+                },
+                {
+                  "idmesa": 56,
+                  "establecimiento": "Colegio Nuestra Señora María",
+                  "electores": 210,
+                  "idseccion": 1
+                },
+                {
+                  "idmesa": 1,
+                  "establecimiento": "Normal 13",
+                  "electores": 180,
+                  "idseccion": 3
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    "/mesas/{id}": {
+      "get": {
+        "tags": [
+          "mesas"
+        ],
+        "summary": "Encuentra mesas",
+        "description": "Encuentra una mesa en específico por id",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "El id de la mesa",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operación exitosa",
+            "schema": {
+              "type": "object",
+              "example": {
+                "idmesa": 1,
+                "establecimiento": "Colegio Nuestra Señora María",
+                "electores": 200,
+                "idseccion": 1
+              }
+            }
+          }
+        }
+      }
+    },
+    "/secciones": {
+      "get": {
+        "tags": [
+          "secciones"
+        ],
+        "summary": "Encuentra secciones",
+        "description": "Encuentra todas las secciones presentes",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Operación exitosa",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object"
+              },
+              "example": [
+                {
+                  "idseccion": 1,
+                  "iddistrito": 3,
+                  "seccion": "Comuna 1"
+                },
+                {
+                  "idseccion": 12,
+                  "iddistrito": 18,
+                  "seccion": "Barrio Rodriguez"
+                },
+                {
+                  "idseccion": 4,
+                  "iddistrito": 3,
+                  "seccion": "Comuna 4"
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    "/secciones/{id}": {
+      "get": {
+        "tags": [
+          "secciones"
+        ],
+        "summary": "Encuentra secciones",
+        "description": "Encuentra una sección en específico por id",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "El id de la sección",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operación exitosa",
+            "schema": {
+              "type": "object",
+              "example": {
+                "idseccion": 1,
+                "iddistrito": 3,
+                "seccion": "Comuna 1"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/distritos": {
+      "get": {
+        "tags": [
+          "distritos"
+        ],
+        "summary": "Encuentra distritos",
+        "description": "Encuentra todos los distritos presentes",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Operación exitosa",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object"
+              },
+              "example": [
+                {
+                  "iddistrito": 1,
+                  "distrito": "Ciudad Autónoma de Buenos Aires"
+                },
+                {
+                  "iddistrito": 2,
+                  "distrito": "Córdoba"
+                },
+                {
+                  "iddistrito": 3,
+                  "distrito": "Mendoza"
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    "/distritos/{id}": {
+      "get": {
+        "tags": [
+          "distritos"
+        ],
+        "summary": "Encuentra distritos",
+        "description": "Encuentra un distrito en específico por id",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "El id del distrito",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operación exitosa",
+            "schema": {
+              "type": "object",
+              "example": {
+                "iddistrito": 1,
+                "distrito": "Ciudad Autónoma de Buenos Aires"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

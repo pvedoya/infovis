@@ -3,6 +3,11 @@ const app = express();
 const port = 5000;
 const api = require('./api')
 
+var swaggerUi = require('swagger-ui-express'),
+    swaggerDocument = require('./swagger.json');
+
+app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
 app.use(express.json());
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
@@ -22,6 +27,21 @@ app.get('/caba-results-agr/', api.getCabaResultsByAgr);
 app.get('/tipo-votos/', api.getTipoVotos);
 app.get('/votos-posneg/', api.getVotosPosNeg);
 app.get('/fecha/', api.getFecha);
+
+
+// -------------------------------------------------------------------------
+
+app.get('/votos/', api.getVotos);
+app.get('/cargos/:id?', api.getCargos);
+app.get('/agrupaciones/:id?', api.getAgrupaciones);
+app.get('/mesas/:id?', api.getMesas);
+app.get('/secciones/:id?', api.getSecciones);
+app.get('/distritos/:id?', api.getDistritos);
+app.get('/tiposVoto/:id?', api.getTiposVoto);
+
+
+// -------------------------------------------------------------------------
+
 
 app.listen(port, () => {
   console.log('Elections app is running on port ' + port);
