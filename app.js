@@ -33,11 +33,13 @@ app.get('/fecha/', api.getFecha);
 
 app.get('/votos/', api.getVotos);
 app.get('/cargos/:id?', api.getCargos);
-app.get('/agrupaciones/:id?', api.getAgrupaciones);
+app.get('/cargosParaDistrito/:id?', api.getCargosForDistrict);
+app.get('/agrupaciones/:nombre?', api.getAgrupaciones);
 app.get('/mesas/:id?', api.getMesas);
 app.get('/secciones/:id?', api.getSecciones);
 app.get('/distritos/:id?', api.getDistritos);
 app.get('/tiposVoto/:id?', api.getTiposVoto);
+app.get('/porcentajes', api.getAgrupationPercentagesPerSection);
 
 
 // -------------------------------------------------------------------------

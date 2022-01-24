@@ -34,7 +34,7 @@ const validateVotosParams = (params) => {
 
   //Check if the parameter is one of the sortBy values
 
-  let groupByParameters = ['idmesa', 'idseccion', 'iddistrito', 'idagrupacion', 'idtipo', 'idcargo', 'fecha'];
+  let groupByParameters = ['idmesa', 'idseccion', 'iddistrito', 'agrupacion', 'idtipo', 'idcargo', 'fecha'];
 
   let i;
   let elem;
@@ -50,7 +50,7 @@ const validateVotosParams = (params) => {
 }
 
 const parseWhere = (params) => {
-  let whereParameters = ['idmesa', 'idseccion', 'iddistrito', 'idagrupacion', 'idtipo', 'idcargo', 'fecha'];
+  let whereParameters = ['idmesa', 'idseccion', 'iddistrito', 'agrupacion', 'idtipo', 'idcargo', 'fecha'];
   let paramsPresent = Object.keys(params);
   const index = paramsPresent.indexOf('groupBy'); //Elimino groupBy de parámetros presentes porque no representa un WHERE
   if (index > -1) {
@@ -62,7 +62,10 @@ const parseWhere = (params) => {
     addedString = "WHERE ";
 
     paramsPresent.forEach(function(elem) {
-      addedString += elem + " = " + params[elem] + " AND ";
+      if (elem == 'agrupacion')
+        addedString += "agrupacion = '" + params[elem].toUpperCase() + "' AND ";
+      else
+        addedString += elem + " = " + params[elem] + " AND ";
     });
 
     //Borrar ultimo and
@@ -70,6 +73,8 @@ const parseWhere = (params) => {
     
     return addedString;
   }
+  if (paramsPresent.length > 0) //Mandaron params pero no los que tomamos
+    return 'error';
   return '';
 }
 
@@ -83,22 +88,36 @@ const getVotos = async (request, response) => {
    return res.status(400).send(generateError(error.details[0].message));
   }
 
+  let groupByPresent = request.query.groupBy != undefined;
+
   let queryString = "SELECT * FROM votos ";
-  if (request.query.groupBy != undefined)
+  if (groupByPresent)
     queryString = "SELECT " + request.query.groupBy + ", SUM(votos) as votos FROM votos "
 
   //Agrego joins si necesito información que no está en la tabla votos
-  if ((request.query.groupBy != undefined && request.query.groupBy.toLowerCase() == "iddistrito") || request.query.iddistrito != undefined)
+  if ((groupByPresent && request.query.groupBy.toLowerCase() == "agrupacion") || request.query.agrupacion != undefined)
+    queryString += "NATURAL JOIN agrupaciones ";
+  if ((groupByPresent && request.query.groupBy.toLowerCase() == "iddistrito") || request.query.iddistrito != undefined)
     queryString += "NATURAL JOIN mesas NATURAL JOIN secciones ";
-  else if ((request.query.groupBy != undefined &&request.query.groupBy.toLowerCase() == "idseccion") || request.query.idseccion != undefined)
+  else if ((groupByPresent && request.query.groupBy.toLowerCase() == "idseccion") || request.query.idseccion != undefined)
     queryString += "NATURAL JOIN mesas ";
   
   //parseo
-  queryString += parseWhere(request.query);
-  if (request.query.groupBy != undefined)
+  let whereString = parseWhere(request.query);
+  if (whereString == 'error'){
+    response.status(400).send({
+      message: 'Parámetros inválidos'
+    });
+    return;
+  }
+
+  queryString += whereString
+  if (groupByPresent != undefined)
     queryString += "GROUP BY " + request.query.groupBy;
 
   queryString += ";"
+
+  //console.log(queryString);
 
   pool.query(queryString, undefined, async(error, results) => {
     if (results != undefined)
@@ -125,14 +144,42 @@ const getCargos = async (request, response) => {
   });
 };
 
+const getCargosForDistrict = async (request, response) => {
+  if (request.params.id == undefined){
+    response.status(400).send({
+      message: 'No se especificó el id del distrito'
+    });
+    return;
+  }
+
+  let schema = { 
+    id: Joi.number().min(0),
+  };       
+  if (!Joi.validate(request.params,schema)){
+    response.status(400).send({
+      message: 'El id del distrito debe ser un número positivo'
+    });
+    return;
+  }
+
+  let queryString = "SELECT DISTINCT cargo, idcargo FROM cargos NATURAL JOIN votos NATURAL JOIN mesas NATURAL JOIN " +
+    "secciones WHERE iddistrito = " + request.params.id + ";";
+
+  pool.query(queryString, undefined, async(error, results) => {
+    if (results != undefined)
+      response.status(200).json(results.rows);
+    else
+      response.status(200).json([]);
+  });
+};
+
 const getAgrupaciones = async (request, response) => {
 
   let queryString = "SELECT * FROM agrupaciones ";
-  if (request.params.id != undefined){
-    queryString += "WHERE idagrupacion = " + request.params.id;
+  if (request.params.nombre != undefined){
+    queryString += "WHERE agrupacion = '" + request.params.nombre.toUpperCase() + "'";
   }
   queryString += ";"
-
 
   pool.query(queryString, undefined, async(error, results) => {
     if (results != undefined)
@@ -205,6 +252,41 @@ const getTiposVoto = async (request, response) => {
   pool.query(queryString, undefined, async(error, results) => {
     if (results != undefined)
       response.status(200).json(results.rows);
+    else
+      response.status(200).json([]);
+  });
+};
+
+const getAgrupationPercentagesPerSection = async (request, response) => {
+  const idcargo = request.query.idcargo;
+  const iddistrito = request.query.iddistrito;
+
+  if (idcargo == undefined || iddistrito == undefined){
+    response.status(400).send({
+      message: 'Parámetro idcargo o iddistrito no especificado'
+    });
+    return;
+  }
+
+  const queryString = "SELECT agrupacion, seccion, 100 * SUM(votos) / totalSeccion::float as porcentaje " +
+                      "FROM votos NATURAL JOIN agrupaciones NATURAL JOIN mesas NATURAL JOIN secciones NATURAL JOIN ( " +
+                        "SELECT iddistrito, seccion, SUM(votos) as totalSeccion " +
+                        "FROM votos NATURAL JOIN mesas NATURAL JOIN secciones " +
+                        "WHERE iddistrito = " + iddistrito + " AND idcargo = " + idcargo + " AND idagrupacion <> 0 " +
+                        "GROUP BY seccion, iddistrito " +
+                        ") as aux " +
+                      "WHERE iddistrito = " + iddistrito + " AND idcargo = " + idcargo + " AND idagrupacion <> 0 " +
+                      "GROUP BY agrupacion, seccion, totalSeccion;";
+
+                    
+  pool.query(queryString, undefined, async(error, results) => {
+    if (results != undefined){
+      let answer = [];
+      results.rows.forEach(element => {
+        answer.push({agrupacion: element.agrupacion, seccion: (element.seccion), porcentaje: parseFloat(element.porcentaje).toFixed(2)});
+      });
+      response.status(200).json(answer);
+    }
     else
       response.status(200).json([]);
   });
@@ -426,10 +508,12 @@ module.exports = {
   getVotos,
   getAgrupaciones,
   getCargos,
+  getCargosForDistrict,
   getMesas,
   getDistritos,
   getSecciones,
   getTiposVoto,
+  getAgrupationPercentagesPerSection,
 
 
   getEntries,
