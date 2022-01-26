@@ -34,12 +34,12 @@ electors = {
 
 ############################################################## part A ##############################################################
 
-r = requests.get('http://localhost:5000/non-positive-results?distrito=Ciudad Aut%noma de Buenos Aires')
+r = requests.get('http://localhost:5000/votos/noPositivos?distrito=Ciudad Aut%noma de Buenos Aires')
 response = json.loads(r.text)
 
 df = pd.DataFrame.from_records(response)
 df['votos'] = pd.to_numeric(df['votos'])
-df = df.groupby(by=["seccion", "tipovotos"])['votos'].agg('sum').to_frame().reset_index()
+df = df.groupby(by=["seccion", "tipo"])['votos'].agg('sum').to_frame().reset_index()
 
 alt.Chart(df, title="Votos no positivos en CABA").mark_bar(
   cornerRadiusTopLeft = 3,
@@ -47,9 +47,9 @@ alt.Chart(df, title="Votos no positivos en CABA").mark_bar(
 ).encode(
   x=alt.X('sum(votos):Q', axis=alt.Axis(title='Votos')),
   y=alt.Y('seccion:O', sort='-x', axis=alt.Axis(title='Sección')),
-  color=alt.Color('tipovotos:N', title="Tipo de Voto"),
+  color=alt.Color('tipo:N', title="Tipo de Voto"),
   order=alt.Order(
-    'tipovotos',
+    'tipo',
     sort='ascending'
   )
 ).show()
@@ -58,12 +58,12 @@ alt.Chart(df, title="Votos no positivos en CABA").mark_bar(
 
 top_districts = ["La Matanza", "La Plata", "General Pueyrredón", "Lomas de Zamora", "Quilmes", "Almirante Brown", "Merlo", "Lanús", "Moreno", "Florencio Varela", "General San Martín", "Tigre", "Avellaneda", "Tres de Febrero", "Berazategui"]
 
-r = requests.get('http://localhost:5000/non-positive-results?distrito=Buenos Aires')
+r = requests.get('http://localhost:5000/votos/noPositivos?distrito=Buenos Aires')
 response = json.loads(r.text)
 
 df = pd.DataFrame.from_records(response)
 df['votos'] = pd.to_numeric(df['votos'])
-df = df[df['seccion'].isin(top_districts)].groupby(by=["seccion", "tipovotos"])['votos'].agg('sum').to_frame().reset_index()
+df = df[df['seccion'].isin(top_districts)].groupby(by=["seccion", "tipo"])['votos'].agg('sum').to_frame().reset_index()
 
 alt.Chart(df, title="Votos no positivos en PBA").mark_bar(
   cornerRadiusTopLeft = 3,
@@ -71,21 +71,21 @@ alt.Chart(df, title="Votos no positivos en PBA").mark_bar(
 ).encode(
   x=alt.X('sum(votos):Q', axis=alt.Axis(title='Votos')),
   y=alt.Y('seccion:O', sort='-x', axis=alt.Axis(title='Sección')),
-  color=alt.Color('tipovotos:N', title="Tipo de Voto"),
+  color=alt.Color('tipo:N', title="Tipo de Voto"),
   order=alt.Order(
-    'tipovotos',
+    'tipo',
     sort='ascending'
   )
 ).show()
 
 ############################################################## part C ##############################################################
 
-r = requests.get('http://localhost:5000/non-positive-results')
+r = requests.get('http://localhost:5000/votos/noPositivos')
 response = json.loads(r.text)
 
 df = pd.DataFrame.from_records(response)
 df['votos'] = pd.to_numeric(df['votos'])
-df = df.groupby(by=["distrito", "tipovotos"])['votos'].agg('sum').to_frame().reset_index()
+df = df.groupby(by=["distrito", "tipo"])['votos'].agg('sum').to_frame().reset_index()
 
 alt.Chart(df, title="Votos no positivos en Argentina").mark_bar(
   cornerRadiusTopLeft = 3,
@@ -93,16 +93,16 @@ alt.Chart(df, title="Votos no positivos en Argentina").mark_bar(
 ).encode(
   x=alt.X('sum(votos):Q', axis=alt.Axis(title='Votos')),
   y=alt.Y('distrito:O', sort='-x', axis=alt.Axis(title='Distrito')),
-  color=alt.Color('tipovotos:N', title="Tipo de Voto"),
+  color=alt.Color('tipo:N', title="Tipo de Voto"),
   order=alt.Order(
-    'tipovotos',
+    'tipo',
     sort='ascending'
   )
 ).show()
 
 ############################################################## part D ##############################################################
 
-r = requests.get('http://localhost:5000/votos-provincia?cargo=DIPUTADOS NACIONALES')
+r = requests.get('http://localhost:5000/votosParaCargo?cargo=DIPUTADOS NACIONALES')
 response = json.loads(r.text)
 
 df = pd.DataFrame.from_records(response)
@@ -120,19 +120,18 @@ total_df = pd.DataFrame({
   'porcentaje': percentage
 })
 
-fig = go.Figure([go.Bar(y=total_df['porcentaje'], x=total_df['distrito'], text=total_df['porcentaje'], textposition='outside')])
-fig.update_layout(yaxis_range=[0,50],
-                  xaxis={'title': 'x-axis','fixedrange':True},
-                  yaxis={'title': 'y-axis','fixedrange':True},
+fig = go.Figure([go.Bar(x=total_df['porcentaje'], y=total_df['distrito'], orientation='h', text=total_df['porcentaje'], textposition='outside', hoverinfo='skip')])
+fig.update_layout(xaxis_range=[0,40],
+                  yaxis={'title': 'x-axis','fixedrange':True},
+                  xaxis={'title': 'y-axis','fixedrange':True},
                   title="Porcentaje de abstención electoral por provincia (Diputados Nacionales)",
-                  yaxis_title="Abstención del padrón (%)")
-fig.update_xaxes(tickangle=270)
+                  xaxis_title="Abstención del padrón (%)")
 
 fig.show()
 
 ############################################################## part E ##############################################################
 
-r = requests.get('http://localhost:5000/votos-provincia?cargo=SENADORES NACIONALES')
+r = requests.get('http://localhost:5000/votosParaCargo?cargo=SENADORES NACIONALES')
 response = json.loads(r.text)
 
 df = pd.DataFrame.from_records(response)
@@ -150,12 +149,11 @@ total_df = pd.DataFrame({
   'porcentaje': percentage
 })
 
-fig = go.Figure([go.Bar(y=total_df['porcentaje'], x=total_df['distrito'], text=total_df['porcentaje'], textposition='outside')])
-fig.update_layout(yaxis_range=[0,50],
-                  xaxis={'title': 'x-axis','fixedrange':True},
-                  yaxis={'title': 'y-axis','fixedrange':True},
+fig = go.Figure([go.Bar(x=total_df['porcentaje'], y=total_df['distrito'], orientation='h', text=total_df['porcentaje'], textposition='outside', hoverinfo='skip')])
+fig.update_layout(xaxis_range=[0,40],
+                  yaxis={'title': 'x-axis','fixedrange':True},
+                  xaxis={'title': 'y-axis','fixedrange':True},
                   title="Porcentaje de abstención electoral por provincia (Senadores Nacionales)",
-                  yaxis_title="Abstención del padrón (%)")
-fig.update_xaxes(tickangle=270)
+                  xaxis_title="Abstención del padrón (%)")
 
 fig.show()

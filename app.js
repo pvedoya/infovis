@@ -40,6 +40,8 @@ app.get('/secciones/:id?', api.getSecciones);
 app.get('/distritos/:id?', api.getDistritos);
 app.get('/tiposVoto/:id?', api.getTiposVoto);
 app.get('/porcentajes', api.getAgrupationPercentagesPerSection);
+app.get('/votos/noPositivos', api.getNonPositive)
+app.get('/votosParaCargo', api.getVotesForPosition)
 
 
 // -------------------------------------------------------------------------
