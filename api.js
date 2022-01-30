@@ -320,6 +320,66 @@ const getVotesForPosition = async (request, response) => {
   });
 };
 
+const getDate = async (request, response) => {
+  const idcargo = request.query.idcargo;
+  const iddistrito = request.query.iddistrito;
+
+  if (idcargo == undefined || iddistrito == undefined){
+    response.status(400).send({
+      message: 'Parámetro idcargo o iddistrito no especificado'
+    });
+    return;
+  }
+
+  const queryString = "SELECT agrupacion, SUM(votos) as votos, fecha " +
+                      "FROM public.votos NATURAL JOIN public.agrupaciones NATURAL JOIN public.mesas NATURAL JOIN public.secciones " +
+                      "WHERE iddistrito = " + iddistrito + " AND idcargo = " + idcargo + " AND idagrupacion <> 0 " +
+                      "GROUP BY fecha, agrupacion ";
+
+                    
+  pool.query(queryString, undefined, async(error, results) => {
+    if (results != undefined){
+      let answer = [];
+      results.rows.forEach(element => {
+        answer.push({agrupacion: element.agrupacion, votos: parseInt(element.votos), fecha: element.fecha});
+      });
+      response.status(200).json(answer);
+    }
+    else
+      response.status(200).json([]);
+  });
+};
+
+const getType = async (request, response) => {
+  const idcargo = request.query.idcargo;
+  const iddistrito = request.query.iddistrito;
+
+  if (idcargo == undefined || iddistrito == undefined){
+    response.status(400).send({
+      message: 'Parámetro idcargo o iddistrito no especificado'
+    });
+    return;
+  }
+
+  const queryString = "SELECT tipo, SUM(votos) as votos " +
+                      "FROM public.votos NATURAL JOIN public.agrupaciones NATURAL JOIN public.mesas NATURAL JOIN public.secciones NATURAL JOIN public.tipovoto " +
+                      "WHERE iddistrito = " + iddistrito + " AND idcargo = " + idcargo + " " +
+                      "GROUP BY tipo ";
+
+                    
+  pool.query(queryString, undefined, async(error, results) => {
+    if (results != undefined){
+      let answer = [];
+      results.rows.forEach(element => {
+        answer.push({tipo: element.tipo, votos: parseInt(element.votos)});
+      });
+      response.status(200).json(answer);
+    }
+    else
+      response.status(200).json([]);
+  });
+};
+
 // -------------------------------------------------------------------------
 
 
@@ -530,6 +590,8 @@ module.exports = {
   getAgrupationPercentagesPerSection,
   getNonPositive,
   getVotesForPosition,
+  getDate,
+  getType,
 
 
   getEntries,
