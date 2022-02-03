@@ -7,7 +7,7 @@ partidos = ["AUTODETERMINACIÓN Y LIBERTAD", "FRENTE DE IZQUIERDA Y DE TRABAJADO
 
 ############################################################## part A ##############################################################
 
-r = requests.get('http://localhost:5000/caba-results?cargo=DIPUTADOS NACIONALES')
+r = requests.get('http://localhost:5000/votosConVariosParametros?cargo=DIPUTADOS NACIONALES&distrito=Ciudad Autónoma de Buenos Aires')
 response = json.loads(r.text)
 
 df = pd.DataFrame.from_records(response)
@@ -33,7 +33,7 @@ alt.Chart(total_df, title="Porcentaje de votos por partido en CABA(Diputados Nac
 
 ############################################################## part B ##############################################################
 
-r = requests.get('http://localhost:5000/caba-results?cargo=DIPUTADOS PROVINCIALES')
+r = requests.get('http://localhost:5000/votosConVariosParametros?cargo=DIPUTADOS PROVINCIALES&distrito=Ciudad Autónoma de Buenos Aires')
 response = json.loads(r.text)
 
 df = pd.DataFrame.from_records(response)
@@ -59,7 +59,7 @@ alt.Chart(total_df,title="Porcentaje de votos por partido en CABA (Diputados Pro
 
 ############################################################## part C ##############################################################
 
-r = requests.get('http://localhost:5000/caba-section-results?cargo=DIPUTADOS NACIONALES')
+r = requests.get('http://localhost:5000/votosConVariosParametros?cargo=DIPUTADOS NACIONALES&distrito=Ciudad Autónoma de Buenos Aires')
 response = json.loads(r.text)
 
 df = pd.DataFrame.from_records(response)
@@ -86,7 +86,7 @@ alt.Chart(total_df,title="Porcentaje de votos por comuna de CABA (Diputados Naci
 
 ############################################################## part D ##############################################################
 
-r = requests.get('http://localhost:5000/caba-section-results?cargo=DIPUTADOS PROVINCIALES')
+r = requests.get('http://localhost:5000/votosConVariosParametros?cargo=DIPUTADOS PROVINCIALES&distrito=Ciudad Autónoma de Buenos Aires')
 response = json.loads(r.text)
 
 df = pd.DataFrame.from_records(response)

@@ -34,7 +34,7 @@ electors = {
 
 ############################################################## part A ##############################################################
 
-r = requests.get('http://localhost:5000/votos/noPositivos?distrito=Ciudad Aut%noma de Buenos Aires')
+r = requests.get('http://localhost:5000/votos/noPositivos?distrito=Ciudad Autónoma de Buenos Aires')
 response = json.loads(r.text)
 
 df = pd.DataFrame.from_records(response)
@@ -102,7 +102,7 @@ alt.Chart(df, title="Votos no positivos en Argentina").mark_bar(
 
 ############################################################## part D ##############################################################
 
-r = requests.get('http://localhost:5000/votosParaCargo?cargo=DIPUTADOS NACIONALES')
+r = requests.get('http://localhost:5000/votosConVariosParametros?cargo=DIPUTADOS NACIONALES')
 response = json.loads(r.text)
 
 df = pd.DataFrame.from_records(response)
@@ -131,7 +131,7 @@ fig.show()
 
 ############################################################## part E ##############################################################
 
-r = requests.get('http://localhost:5000/votosParaCargo?cargo=SENADORES NACIONALES')
+r = requests.get('http://localhost:5000/votosConVariosParametros?cargo=SENADORES NACIONALES')
 response = json.loads(r.text)
 
 df = pd.DataFrame.from_records(response)
