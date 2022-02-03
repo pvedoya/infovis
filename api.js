@@ -326,6 +326,92 @@ const getVotesMultipleParams = async (request, response) => {
   });
 };
 
+const getVotesForPosition = async (request, response) => {
+  let cargo = request.query.cargo;
+  if(cargo == null) {
+    cargo = "%";
+  }
+  const queryString = "SELECT distrito, seccion, votos "+
+                      "FROM votos NATURAL JOIN mesas NATURAL JOIN secciones NATURAL JOIN distritos NATURAL JOIN cargos " +
+                      "WHERE cargo LIKE $1 ";
+
+  pool.query(queryString, [cargo], (error, results) => {
+    response.status(200).json(results.rows);
+  });
+};
+
+const getDate = async (request, response) => {
+  const idcargo = request.query.idcargo;
+  const iddistrito = request.query.iddistrito;
+
+  if (idcargo == undefined || iddistrito == undefined){
+    response.status(400).send({
+      message: 'Parámetro idcargo o iddistrito no especificado'
+    });
+    return;
+  }
+
+  const queryString = "SELECT agrupacion, SUM(votos) as votos, fecha " +
+                      "FROM public.votos NATURAL JOIN public.agrupaciones NATURAL JOIN public.mesas NATURAL JOIN public.secciones " +
+                      "WHERE iddistrito = " + iddistrito + " AND idcargo = " + idcargo + " AND idagrupacion <> 0 " +
+                      "GROUP BY fecha, agrupacion ";
+
+                    
+  pool.query(queryString, undefined, async(error, results) => {
+    if (results != undefined){
+      let answer = [];
+      results.rows.forEach(element => {
+        answer.push({agrupacion: element.agrupacion, votos: parseInt(element.votos), fecha: element.fecha});
+      });
+      response.status(200).json(answer);
+    }
+    else
+      response.status(200).json([]);
+  });
+};
+
+const getType = async (request, response) => {
+  const idcargo = request.query.idcargo;
+  const iddistrito = request.query.iddistrito;
+
+  if (idcargo == undefined || iddistrito == undefined){
+    response.status(400).send({
+      message: 'Parámetro idcargo o iddistrito no especificado'
+    });
+    return;
+  }
+
+  const queryString = "SELECT tipo, SUM(votos) as votos " +
+                      "FROM public.votos NATURAL JOIN public.agrupaciones NATURAL JOIN public.mesas NATURAL JOIN public.secciones NATURAL JOIN public.tipovoto " +
+                      "WHERE iddistrito = " + iddistrito + " AND idcargo = " + idcargo + " " +
+                      "GROUP BY tipo ";
+
+                    
+  pool.query(queryString, undefined, async(error, results) => {
+    if (results != undefined){
+      let answer = [];
+      results.rows.forEach(element => {
+        answer.push({tipo: element.tipo, votos: parseInt(element.votos)});
+      });
+      response.status(200).json(answer);
+    }
+    else
+      response.status(200).json([]);
+  });
+};
+
+const getElectorsAndVotes = async (request, response) => {
+  let distrito = request.query.distrito;
+  
+  const queryString = "SELECT votos, seccion, mesa, electores "+
+                      "FROM votos NATURAL JOIN mesas NATURAL JOIN cargos " +
+                      "WHERE cargo LIKE 'DIPUTADOS NACIONALES' and distrito=" + distrito;
+
+  pool.query(queryString, [cargo], (error, results) => {
+    response.status(200).json(results.rows);
+  });
+};
+
 
 module.exports = {
   getVotos,
@@ -339,4 +425,7 @@ module.exports = {
   getAgrupationPercentagesPerSection,
   getNonPositive,
   getVotesMultipleParams,
+  getVotesForPosition,
+  getDate,
+  getType
 }

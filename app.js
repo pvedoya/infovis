@@ -6,7 +6,13 @@ const api = require('./api')
 var swaggerUi = require('swagger-ui-express'),
     swaggerDocument = require('./swagger.json');
 
-app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+var options = {
+  swaggerOptions: {
+    tryItOutEnabled: true
+  }
+};
+
+app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument, options));
 
 app.use(express.json());
 app.use(function(req, res, next) {
@@ -26,6 +32,10 @@ app.get('/tiposVoto/:id?', api.getTiposVoto);
 app.get('/porcentajes', api.getAgrupationPercentagesPerSection);
 app.get('/votos/noPositivos', api.getNonPositive)
 app.get('/votosConVariosParametros', api.getVotesMultipleParams)
+app.get('/votos/noPositivos', api.getNonPositive);
+app.get('/votosParaCargo', api.getVotesForPosition);
+app.get('/fechas/', api.getDate);
+app.get('/tipos/', api.getType);
 
 
 // -------------------------------------------------------------------------
