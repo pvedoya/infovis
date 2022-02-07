@@ -112,12 +112,10 @@ const getVotos = async (request, response) => {
   }
 
   queryString += whereString
-  if (groupByPresent != undefined)
+  if (groupByPresent)
     queryString += "GROUP BY " + request.query.groupBy;
 
   queryString += ";"
-
-  //console.log(queryString);
 
   pool.query(queryString, undefined, async(error, results) => {
     if (results != undefined)
