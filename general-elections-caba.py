@@ -25,7 +25,7 @@ total_df = pd.DataFrame({
   'porcentaje': percentage
 })
 
-alt.Chart(total_df, title="Porcentaje de votos por partido en CABA(Diputados Nacionales)").mark_bar().encode(
+alt.Chart(total_df, title="Porcentaje de votos por partido en CABA (Diputados Nacionales)").mark_bar().encode(
   y=alt.Y('agrupacion:N', sort='x', axis=alt.Axis(title='Agrupación')),
   x=alt.X('porcentaje:Q', axis=alt.Axis(format='.0%', title='Porcentaje')),
   color=alt.Color('agrupacion:N', scale=alt.Scale(domain=partidos, range=["blue", "red", "cyan", "yellow","green" ]), title="Agrupación")

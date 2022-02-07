@@ -297,7 +297,7 @@ const getNonPositive = async (request, response) => {
   }
   const queryString = "SELECT distrito, seccion, tipo, votos "+
                       "FROM votos NATURAL JOIN mesas NATURAL JOIN secciones NATURAL JOIN distritos NATURAL JOIN tipovoto " +
-                      "WHERE distrito LIKE $1 AND idcargo=3 AND tipo IN ('nulos', 'recurridos', 'blancos', 'impugnados');"
+                      "WHERE distrito LIKE $1 AND idcargo=3 AND tipo IN ('nulo', 'recurridos', 'blancos', 'impugnados');"
 
   pool.query(queryString, [distrito], (error, results) => {
     response.status(200).json(results.rows);
