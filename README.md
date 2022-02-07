@@ -29,4 +29,11 @@ Se debe ver un mensaje por la consola que indica el puerto en el que está corri
 
 El mismo es el puerto 5000 y se tiene documentación de la API en:  
 
-[Documentación API](http://localhost:5000/docs/)
+[Documentación API](http://localhost:5000/docs/)  
+  
+  
+Los workbooks de ObservableHQ con las visualizaciones son los siguientes:  
+  
+[Análisis por partido, tipo y momento de carga. CABA](https://observablehq.com/@9f102930f24b5b7d/final-infovis/3)  
+
+[Análisis por comunas. CABA](https://observablehq.com/@a3152d54413ef2ed/visualizacion-elecciones-legislativas-2021/2)  
