@@ -5,7 +5,8 @@ import altair as alt
 
 ############################################################## part A ##############################################################
 
-r = requests.get('http://localhost:5000/electors-and-votes?distrito=Ciudad Autónoma de Buenos Aires')
+r = requests.get('http://localhost:5000/mesasYElectores?distrito=Ciudad Autónoma de Buenos Aires')
+print("Got response")
 response = json.loads(r.text)
 
 df = pd.DataFrame.from_records(response)

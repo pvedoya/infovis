@@ -36,6 +36,7 @@ app.get('/votos/noPositivos', api.getNonPositive);
 app.get('/votosParaCargo', api.getVotesForPosition);
 app.get('/fechas/', api.getDate);
 app.get('/tipos/', api.getType);
+app.get('/mesasYElectores/', api.getElectorsAndVotes);
 
 
 // -------------------------------------------------------------------------

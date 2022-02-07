@@ -404,10 +404,11 @@ const getElectorsAndVotes = async (request, response) => {
   let distrito = request.query.distrito;
   
   const queryString = "SELECT votos, seccion, mesa, electores "+
-                      "FROM votos NATURAL JOIN mesas NATURAL JOIN cargos " +
-                      "WHERE cargo LIKE 'DIPUTADOS NACIONALES' and distrito=" + distrito;
+                      "FROM votos NATURAL JOIN mesas NATURAL JOIN cargos NATURAL JOIN secciones NATURAL JOIN distritos " +
+                      "WHERE cargo LIKE 'DIPUTADOS NACIONALES' AND distrito='" + distrito + "'";
 
-  pool.query(queryString, [cargo], (error, results) => {
+  console.log(queryString)
+  pool.query(queryString, (error, results) => {
     response.status(200).json(results.rows);
   });
 };
@@ -427,5 +428,6 @@ module.exports = {
   getVotesMultipleParams,
   getVotesForPosition,
   getDate,
-  getType
+  getType,
+  getElectorsAndVotes
 }
