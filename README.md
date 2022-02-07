@@ -5,7 +5,8 @@
 
 ### Carga de base de datos
 Es necesario tener PostgreSQL instalado
-- Descargar el archivo ''
+- Descargar el archivo con el dump de la base [fixed_db.sql.zip](fixed_db.sql.zip)
+- Extraer el archivo .sql
 - Por línea de comandos ingresar: psql databasename < data_base_dump
 
 Ahora se tiene la base de datos localmente.  
@@ -26,5 +27,6 @@ Esto instalará las librerías necesarias.
 Se debe ver un mensaje por la consola que indica el puerto en el que está corriendo el servicio.  
   
 
-El mismo es el puerto 5000 y se tiene documentación de la API en:
+El mismo es el puerto 5000 y se tiene documentación de la API en:  
+
 [Documentación API](http://localhost:5000/docs/)
