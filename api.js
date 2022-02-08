@@ -405,7 +405,6 @@ const getElectorsAndVotes = async (request, response) => {
                       "FROM votos NATURAL JOIN mesas NATURAL JOIN cargos NATURAL JOIN secciones NATURAL JOIN distritos " +
                       "WHERE cargo LIKE 'DIPUTADOS NACIONALES' AND distrito='" + distrito + "'";
 
-  console.log(queryString)
   pool.query(queryString, (error, results) => {
     response.status(200).json(results.rows);
   });
