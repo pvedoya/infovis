@@ -3,10 +3,8 @@ import json
 import pandas as pd
 import altair as alt
 
-############################################################## part A ##############################################################
 
 r = requests.get('http://localhost:5000/mesasYElectores?distrito=Ciudad Autónoma de Buenos Aires')
-print("Got response")
 response = json.loads(r.text)
 
 df = pd.DataFrame.from_records(response)

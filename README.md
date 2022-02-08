@@ -9,7 +9,15 @@ Es necesario tener PostgreSQL instalado
 - Extraer el archivo .sql
 - Por línea de comandos ingresar: psql databasename < data_base_dump
 
-Ahora se tiene la base de datos localmente.  
+Ahora se tiene la base de datos localmente, para que la api pueda acceder, en el archivo api.js modificar el Pool con:
+
+const pool = new Pool({
+  user: 'myUser',                // poner su usuario
+  host: 'localhost',
+  database: 'myDatabase',        // nombre de la db (en nuestro dump se llama 'infovis')
+  password: 'myPassword',        // clave de la db (en nuestro dump se llama 'infovis-final')
+  port: 5432                     // puerto donde se buscara (default de postgres es 5432)
+});
   
 
 ### Preparación del proyecto
@@ -19,7 +27,6 @@ Es necesario tener node.js instalado
 - Correr: npm install
 
 Esto instalará las librerías necesarias.  
-  
 
 ### Correr el proyecto
 - En la carpeta del proyecto correr: node app.js
